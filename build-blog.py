@@ -21,14 +21,20 @@ at the end we have to have for each page 3 things:
     - for regular pages it's the up and down of tree of that page
 
 ## IMPLEMENTATION:
-- we need a url-md-map (everything is a relative url):
+- we need a url_md_map (everything is a relative url):
     {
     "url1": (date,"markdown text",tags=[])
     "url2": (date,"md text",tags[])
     }
 - add `index.md` pages to `blog` and `blog/tag1`, `blog/tag2` ... `blog/tagn`
 - create menu map:
-    {("blog":"blog/index") : {("tag1","tag1/index")
+    {blog: {tag1:{},tag2:{},tag3:{}],
+    About: {},
+    Presentations-n-code: {},
+    Resources: {Academic: {},
+                Interview-Prep: {}
+                ML-Papers: {}}
+
 
 
 
@@ -38,29 +44,71 @@ blog/posts                                  |Blog -> index
 *autogend*                                  |    tag2 -> index
 resouces/                                   |Resources -> None
 resouces/mlIntro/index                      |    ML Intro -> index
-                                            |    Academic -> academic
-                                            |Presentations and Code -> index
-                      |    Python -> index
-                      |    General -> None
-                      |        Cats-> Cat
+resources/Academic/index                    |    Academic -> academic
+Presentations-n-Code/index                  |Presentations and Code -> index
 
 - convert the menu map to html:
-    <ul>
-    <li>Blog
+    <li><a href="folder_i/index.html">folder_i</a></li>
 
+    <ul>
+        <li><a href="blog/index.html"> Blog</a></li>
+        <ul>
+            <li><a href=blog/tag1.html">Tag1</a></li>
+            ....
+        </ul>
+        <li><a href="About/index.html">About</a></li>
+        <li><a href="">Resources</a></li>
+        <ul>
+            ...
+        </ul>
     </ul>
 
 - then we convert it to a url-body-map (html body)
 
-
-
-
 """
 
-def build_blog(src='in',target='out',theme='theme'):
+from collections import namedtuple
+import glob
+from pathlib import Path
+import markdown
+MDFileData = namedtuple('MDFileData', ['date', 'raw_file', 'html', 'tags'])
+
+
+
+
+def load_md_files(src:str):
+    def load(filename)->MDFileData:
+        date=git_date(filename)
+        raw_file=Path(filename).read_text(encoding='utf8')
+        md = markdown.Markdown(extensions=['meta'])
+        html = md.convert(raw_file)
+        tags=next((v for (k,v) in md.Meta.items() if 'tag' in k.lower()))
+        return MDFileData(date=date,raw_file=raw_file,html=html,tags=tags)
+
+    return {file_name,load(file_name) for file_name in glob.glob('in/**/*md',recursive=True) }
+
+
+def add_blog_index_files(url_md_map):
+    pass
+
+
+def build_blog(src='in',target='out',theme='theme',debug=None)->None:
     '''
-    :param src:
-    :param target:
-    :param theme:
+    :param src: in folder
+    :param target: output
+    :param theme: theme
+    :param debug: folder_name to write the md intermediate values
     :return:
     '''
+
+    url_md_map = load_md_files( src)
+    url_md_map = add_blog_index_files(url_md_map)
+    menu_map = find_menu_tree(url_md_map)
+    nav = calc_blog_nav({k: v for (k, v) in url_md_map.items() if k.startswith("blog")}})
+    nav.update(calc_non_blog_nav({k: v for (k, v) in url_md_map.items() if not k.startswith("blog")}}))
+    if debug:
+        write_md_map(url_md_map, menu_map, nav)
+    # now that we have the menu_map, the body and the navigation we can write the output blog:
+    write_html_from_maps(target,theme, url_md_map, menu_map, nav)
+    write_non_md_resoures(src, target)
+
