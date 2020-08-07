@@ -27,25 +27,13 @@ at the end we have to have for each page 3 things:
     "url2": (date,"md text",tags[])
     }
 - add `index.md` pages to `blog` and `blog/tag1`, `blog/tag2` ... `blog/tagn`
-- create menu map:
-    {blog: {tag1:{},tag2:{},tag3:{}],
-    About: {},
-    Presentations-n-code: {},
-    Resources: {Academic: {},
-                Interview-Prep: {}
-                ML-Papers: {}}
+- create menu map with format:
+{"blog": {"tag1":{},
+            "tag2:{}...},
+"Resouces": {"academic":...
+...
+}
 
-
-
-
-
-blog/posts                                  |Blog -> index
-*autogend*                                  |    tag1 -> index
-*autogend*                                  |    tag2 -> index
-resouces/                                   |Resources -> None
-resouces/mlIntro/index                      |    ML Intro -> index
-resources/Academic/index                    |    Academic -> academic
-Presentations-n-Code/index                  |Presentations and Code -> index
 
 - convert the menu map to html:
     <li><a href="folder_i/index.html">folder_i</a></li>
@@ -74,35 +62,46 @@ import markdown
 import shlex
 import datetime
 import re
+from pprint import pprint
+import glob, os
+
 
 MDFileData = namedtuple('MDFileData', ['date', 'raw_file', 'html', 'tags'])
+NavNode = namedtuple('NavNod', ['name', 'link', 'children'])
 
 
 def git_date(filename: str):
     from subprocess import Popen, PIPE
+    result = datetime.datetime.now()  # default value
+    try:
+        cmd = f"""git log -1 --pretty="format:%ct" {filename}"""
+        process = Popen(shlex.split(cmd), stdout=PIPE)
+        res = process.communicate()
+        # print(f"ran '{cmd}' and got={res}")
+        unix_time = int(res[0])
+        process.wait()
+        result = datetime.datetime.fromtimestamp(unix_time)
+    finally:
+        return result
 
-    cmd = f"""git log -1 --pretty="format:%ct" {filename}"""
-    process = Popen(shlex.split(cmd), stdout=PIPE)
-    unix_time = int(process.communicate()[0])
-    exit_code = process.wait()
-    assert not exit_code, "git command failed"
-    return datetime.datetime.fromtimestamp(unix_time)
+
+from typing import Tuple, Dict, Iterable
 
 
-def md_to_html_converter(raw_file:str)->str:
+def md_to_html_converter(raw_file: str) -> Tuple[str, Dict]:
     '''
     :param raw_file: markdown
     :return: valid html
     '''
     md = markdown.Markdown(extensions=['meta'])
-    return md.convert(raw_file)
+    return (md.convert(raw_file), md.Meta)
 
 
 def load_file(filename) -> MDFileData:
     date = git_date(filename)
     raw_file = Path(filename).read_text(encoding='utf8')
-    html = md_to_html_converter(raw_file)
-    tags = next((v for (k, v) in md.Meta.items() if 'tag' in k.lower()), [])
+    html, meta = md_to_html_converter(raw_file)
+    tags = next((v for (k, v) in meta.items() if 'tag' in k.lower()), [])
     return MDFileData(date=date, raw_file=raw_file, html=html, tags=tags)
 
 
@@ -114,22 +113,22 @@ title_pattern = re.compile(".*^\# *(.*)$.*", re.MULTILINE)
 img_pattern = re.compile(".*^\!\[.*\]\((.*)\)$.*", re.MULTILINE)
 
 
-def summarize_post(filename: str, file: MDFileData) -> str:
+def summarize_post(filename: str, post: MDFileData) -> str:
     '''
     takes a MD file and takes out the Title (pre-fixed with #) and the first image and return as md
     :param raw_file: markdown body of post
     :return: markdown snippet of that blog post
     '''
-    date = file.date
+    date = post.date
     try:
-        title = title_pattern.findall(file.raw_file)[0]
+        title = title_pattern.findall(post.raw_file)[0]
     except:
-        title = None
+        title = "😢NO TITLE😢"
     try:
-        img_url = img_pattern.findall(file.raw_file)[0]
+        img_url = img_pattern.findall(post.raw_file)[0]
     except:
         img_url = None
-    assert date and title and filename, f"something is wrong with {filename} or {file}"
+    assert date and title and filename, f"something is wrong with {filename} or {post}"
     return f"""{date}\n### {title}""" \
            + (f"""\n!(preview)[{img_url}]""" if img_url else "") \
            + f"""\n(Read More][{filename}]\n\n"""
@@ -140,12 +139,12 @@ def make_MD_index(blog_items) -> MDFileData:
     :param blog_items: that you need to create an index document for
     :return: index document sorted by dates
     '''
-    sorted_itmes = {k: v for (k, v) in sorted(blog_items.items(), key=lambda kv: kv[1].date, reverse=True)}
+    sorted_posts = {k: v for (k, v) in sorted(blog_items.items(), key=lambda kv: kv[1].date, reverse=True)}
     raw_file = ""
-    for post in (summarize_post(k,v) for (k,v) in sorted_itmes):
-        raw_file=raw_file+post
-    html = md_to_html_converter(raw_file)
-    return MDFileData(date=datetime.datetime.now(),raw_file=raw_file,html=html,tags=[])
+    for post in (summarize_post(k, v) for (k, v) in sorted_posts.items()):
+        raw_file = raw_file + post
+    html, _ = md_to_html_converter(raw_file)
+    return MDFileData(date=datetime.datetime.now(), raw_file=raw_file, html=html, tags=[])
 
 
 def add_blog_index_files(url_md_map):
@@ -158,14 +157,20 @@ def add_blog_index_files(url_md_map):
     blog_items = {k: v for (k, v) in url_md_map.items() if pattern.match(k)}
     all_tags = {tag for i in blog_items.values() for tag in i.tags}
 
-    url_md_map["blog/index.md"]=make_MD_index(blog_items)
+    url_md_map["blog/index.md"] = make_MD_index(blog_items)
     for tag in all_tags:
-        tag_items={k:v for (k,v) in blog_items.items() if tag in v.tags}
-        url_md_map[f"blog/{tag}/index.md"]=make_MD_index(tag_items)
+        tag_items = {k: v for (k, v) in blog_items.items() if tag in v.tags}
+        url_md_map[f"blog/{tag}/index.md"] = make_MD_index(tag_items)
     return url_md_map
 
 
 def find_menu_tree(url_md_map):
+    '''
+    find navigation menu data structure based on webpage
+    :param url_md_map: map of all posts and pages index by url
+    :return: NavNode tree:
+            NavNode
+    '''
     pass
 
 
@@ -175,6 +180,35 @@ def calc_blog_nav(map):
 
 def calc_non_blog_nav(param):
     pass
+
+
+
+
+def _create_non_blog_index_docs(dir: str) -> Dict[str, MDFileData]:
+    result = {}
+    if 'blog' in dir:
+        return result
+    rel_sub_dirs = [x[len(dir) + 1:-1] for x in glob.glob(f"{dir}/**/")]
+    if not os.path.exists(f"{dir}/index.md"):
+        # need to create index file for this folder
+        raw_file = ""
+        for sub_dir in rel_sub_dirs:
+            raw_file += f"# [{sub_dir}]({sub_dir})\n"
+        for file in glob.glob(f"{dir}/*.md"):
+            f=file[len(dir)+1:]
+            raw_file += f"### [{f}]({f})"
+        new_index = MDFileData(date=datetime.datetime.now(),
+                               raw_file=raw_file,
+                               html=md_to_html_converter(raw_file)[0],
+                               tags=[])
+        result.update({dir + "/index.md": new_index})
+    for sub_dir in rel_sub_dirs:
+        result.update(_create_non_blog_index_docs(dir + "/" + sub_dir))
+    return result
+
+
+def create_non_blog_index_docs(dir: str) -> Dict[str, MDFileData]:
+    return {k[len(dir) + 1:]: v for (k, v) in _create_non_blog_index_docs(dir).items()}
 
 
 def build_blog(src='in', target='out', theme='theme', debug=None) -> None:
@@ -188,6 +222,9 @@ def build_blog(src='in', target='out', theme='theme', debug=None) -> None:
 
     url_md_map = load_md_files(src)
     url_md_map = add_blog_index_files(url_md_map)
+    url_md_map.update(create_non_blog_index_docs(src))
+    # at this stage there are no folders without index files
+
     menu_map = find_menu_tree(url_md_map)
     nav = calc_blog_nav({k: v for (k, v) in url_md_map.items() if k.startswith("blog")})
     nav.update(calc_non_blog_nav({k: v for (k, v) in url_md_map.items() if not k.startswith("blog")}))
@@ -208,3 +245,5 @@ def write_html_from_maps(target, theme, url_md_map, menu_map, nav) -> None:
 
 def write_non_md_resoures(src, target) -> None:
     pass
+
+# build_blog()
