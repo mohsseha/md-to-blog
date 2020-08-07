@@ -64,7 +64,6 @@ import re
 from pprint import pprint
 import glob, os
 
-
 MDFileData = namedtuple('MDFileData', ['date', 'raw_file', 'html', 'tags'])
 
 
@@ -96,10 +95,13 @@ def md_to_html_converter(raw_file: str) -> Tuple[str, Dict]:
 
 
 def load_file(filename) -> MDFileData:
-    date = git_date(filename)
     raw_file = Path(filename).read_text(encoding='utf8')
     html, meta = md_to_html_converter(raw_file)
-    tags = next((v for (k, v) in meta.items() if 'tag' in k.lower()), [])
+    tags = next((v for (k, v) in meta.items() if 'tag' in k.lower()), [])  # take care of plural and case issues
+    try:
+        date = datetime.datetime.fromisoformat(next((v for (k, v) in meta.items() if 'date' in k.lower())))  # same here
+    except:
+        date = git_date(filename)
     return MDFileData(date=date, raw_file=raw_file, html=html, tags=tags)
 
 
@@ -162,7 +164,6 @@ def add_blog_index_files(url_md_map):
     return url_md_map
 
 
-
 def find_menu_tree(url_md_map):
     '''
     find navigation menu data structure based on webpage
@@ -176,30 +177,29 @@ def find_menu_tree(url_md_map):
     '''
     result = {}
     for url in url_md_map.keys():
-        folder_li=url.split('/')[:-1]
+        folder_li = url.split('/')[:-1]
         # now we insert into tree dict:
-        pt=result # point to the current level of the map
+        pt = result  # point to the current level of the map
         for l in folder_li:
-            #going left to right inserting elements
+            # going left to right inserting elements
             if l not in pt:
-                pt[l]={}
-            pt=pt[l]
+                pt[l] = {}
+            pt = pt[l]
     return result
 
-def calc_blog_nav(blog_md_map:Dict[str,MDFileData])->Dict[str,str]:
+
+def calc_blog_nav(blog_md_map: Dict[str, MDFileData]) -> Dict[str, str]:
     '''
     for blog pages *only* point to the next or previous blog post in time.
     returns aa dict from url to MD snippet of links
     '''
 
-    nav_keys=[k for k in blog_md_map if re.findall(r"blog/[^/]+.md",k) and ("index.md" not in k)]
-    nav_keys.sort(key=lambda k:blog_md_map[k].date)
+    nav_keys = [k for k in blog_md_map if re.findall(r"blog/[^/]+.md", k) and ("index.md" not in k)]
+    nav_keys.sort(key=lambda k: blog_md_map[k].date)
 
 
 def calc_non_blog_nav(other_md_map):
     pass
-
-
 
 
 def _create_non_blog_index_docs(dir: str) -> Dict[str, MDFileData]:
@@ -213,7 +213,7 @@ def _create_non_blog_index_docs(dir: str) -> Dict[str, MDFileData]:
         for sub_dir in rel_sub_dirs:
             raw_file += f"# [{sub_dir}]({sub_dir})\n"
         for file in glob.glob(f"{dir}/*.md"):
-            f=file[len(dir)+1:]
+            f = file[len(dir) + 1:]
             raw_file += f"### [{f}]({f})"
         new_index = MDFileData(date=datetime.datetime.now(),
                                raw_file=raw_file,
