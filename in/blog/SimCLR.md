@@ -2,9 +2,7 @@ tags:	ML
 
 # SimCLR: (almost) beating Supervised Learning 
 
-
 !(Image)[SimCLR.png]
-
 
 ## Key Points: 
 - Unsupervised Performance **almost** same as supvervised performance 

@@ -191,7 +191,9 @@ def calc_blog_nav(blog_md_map:Dict[str,MDFileData])->Dict[str,str]:
     for blog pages *only* point to the next or previous blog post in time.
     returns aa dict from url to MD snippet of links
     '''
+
     nav_keys=[k for k in blog_md_map if re.findall(r"blog/[^/]+.md",k) and ("index.md" not in k)]
+    nav_keys.sort(key=lambda k:blog_md_map[k].date)
 
 
 def calc_non_blog_nav(other_md_map):
