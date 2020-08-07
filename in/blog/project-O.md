@@ -11,4 +11,5 @@ it has a few nice nuggets that tech managers find useful:
 !(values)[Google-Managers.png]
 - regular survays of your employees like (this)[https://rework.withgoogle.com/guides/managers-give-feedback-to-managers/steps/try-googles-manager-feedback-survey/] are probably a good idea.
 
+
 Personally, I never want to manage without the last one. 
