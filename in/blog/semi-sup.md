@@ -1,3 +1,5 @@
+Tags: Machine_Learning
+
 # A Visual Guide For self-supervised methods in DL
 
 I like (this)[https://amitness.com/2020/02/illustrated-self-supervised-learning/] summary of more recent papers in DL applications to vision. 

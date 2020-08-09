@@ -1,9 +1,7 @@
-Tags:	 Machine Learning
-	MD
-	Management
-	Test
+Tags:	Machine_Learning
+        Management
+Date: 2019-01-01
 
-Date: 2019-1-1
 # Title of the post 
 
 this is a first post. 

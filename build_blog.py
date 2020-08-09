@@ -63,8 +63,13 @@ import datetime
 import re
 from pprint import pprint
 import glob, os
+from pathlib import Path
 
-MDFileData = namedtuple('MDFileData', ['date', 'raw_file', 'html', 'tags'])
+
+MDFileData = namedtuple('MDFileData', ['date', 'raw_file', 'html', "title", 'tags'])
+
+title_pattern = re.compile(".*^\# *(.*)$.*", re.MULTILINE)
+img_pattern = re.compile(".*^\!\[.*\]\((.*)\)$.*", re.MULTILINE)
 
 
 def git_date(filename: str):
@@ -91,7 +96,7 @@ def md_to_html_converter(raw_file: str) -> Tuple[str, Dict]:
     :return: valid html
     '''
     md = markdown.Markdown(extensions=['meta'])
-    return (md.convert(raw_file), md.Meta)
+    return md.convert(raw_file), md.Meta
 
 
 def load_file(filename) -> MDFileData:
@@ -99,18 +104,20 @@ def load_file(filename) -> MDFileData:
     html, meta = md_to_html_converter(raw_file)
     tags = next((v for (k, v) in meta.items() if 'tag' in k.lower()), [])  # take care of plural and case issues
     try:
-        date = datetime.datetime.fromisoformat(next((v for (k, v) in meta.items() if 'date' in k.lower())))  # same here
+        title = title_pattern.findall(raw_file)[0]
+    except:
+        title = "😢NO TITLE😢"
+    try:
+        date = datetime.datetime.fromisoformat(
+            next((v[0] for (k, v) in meta.items() if 'date' in k.lower())))  # same here
     except:
         date = git_date(filename)
-    return MDFileData(date=date, raw_file=raw_file, html=html, tags=tags)
+        # print(f"file={filename}, md={meta}")
+    return MDFileData(date=date, raw_file=raw_file, html=html, title=title, tags=tags)
 
 
 def load_md_files(src: str):
     return {file_name[len(src) + 1:]: load_file(file_name) for file_name in glob.glob(f"{src}/**/*md", recursive=True)}
-
-
-title_pattern = re.compile(".*^\# *(.*)$.*", re.MULTILINE)
-img_pattern = re.compile(".*^\!\[.*\]\((.*)\)$.*", re.MULTILINE)
 
 
 def summarize_post(filename: str, post: MDFileData) -> str:
@@ -120,10 +127,7 @@ def summarize_post(filename: str, post: MDFileData) -> str:
     :return: markdown snippet of that blog post
     '''
     date = post.date
-    try:
-        title = title_pattern.findall(post.raw_file)[0]
-    except:
-        title = "😢NO TITLE😢"
+    title = post.title
     try:
         img_url = img_pattern.findall(post.raw_file)[0]
     except:
@@ -144,7 +148,7 @@ def make_MD_index(blog_items) -> MDFileData:
     for post in (summarize_post(k, v) for (k, v) in sorted_posts.items()):
         raw_file = raw_file + post
     html, _ = md_to_html_converter(raw_file)
-    return MDFileData(date=datetime.datetime.now(), raw_file=raw_file, html=html, tags=[])
+    return MDFileData(date=datetime.datetime.now(), raw_file=raw_file, html=html, title="", tags=[])
 
 
 def add_blog_index_files(url_md_map):
@@ -188,6 +192,9 @@ def find_menu_tree(url_md_map):
     return result
 
 
+from collections import defaultdict
+
+
 def calc_blog_nav(blog_md_map: Dict[str, MDFileData]) -> Dict[str, str]:
     '''
     for blog pages *only* point to the next or previous blog post in time.
@@ -196,10 +203,36 @@ def calc_blog_nav(blog_md_map: Dict[str, MDFileData]) -> Dict[str, str]:
 
     nav_keys = [k for k in blog_md_map if re.findall(r"blog/[^/]+.md", k) and ("index.md" not in k)]
     nav_keys.sort(key=lambda k: blog_md_map[k].date)
+    result = defaultdict(str)
+    for i, k in enumerate(nav_keys):
+        page_nav = ""
+        if i > 0:
+            link = nav_keys[i - 1]
+            post = blog_md_map[link]
+            title = post.title
+            page_nav += f"<<[{title}]({link})"
+        if i < len(nav_keys) - 1:
+            link = nav_keys[i + 1]
+            post = blog_md_map[link]
+            title = post.title
+            page_nav += f"[{title}]({link})>>"
+        result[k] = page_nav
+    return result
 
 
-def calc_non_blog_nav(other_md_map):
-    pass
+def calc_non_blog_nav(other_md_map: Dict[str, MDFileData]) -> Dict[str, str]:
+    '''
+    for each page return an map that takes that key to a markdown string of the format
+    folder < sub_folder < sub-sub folder
+    '''
+    result = defaultdict(str)
+    for key, post in other_md_map.items():
+        dir_menu = key.split('/')[:-1]
+        page_nav = ""
+        for d in dir_menu:
+            page_nav += f"<< [{d}]({d})"
+        result[key] = page_nav
+    return result
 
 
 def _create_non_blog_index_docs(dir: str) -> Dict[str, MDFileData]:
@@ -218,6 +251,7 @@ def _create_non_blog_index_docs(dir: str) -> Dict[str, MDFileData]:
         new_index = MDFileData(date=datetime.datetime.now(),
                                raw_file=raw_file,
                                html=md_to_html_converter(raw_file)[0],
+                               title="",
                                tags=[])
         result.update({dir + "/index.md": new_index})
     for sub_dir in rel_sub_dirs:
@@ -247,14 +281,29 @@ def build_blog(src='in', target='out', theme='theme', debug=None) -> None:
     page_nav_links = calc_blog_nav({k: v for (k, v) in url_md_map.items() if k.startswith("blog")})
     page_nav_links.update(calc_non_blog_nav({k: v for (k, v) in url_md_map.items() if not k.startswith("blog")}))
     if debug:
-        write_md_map(url_md_map, menu_map, page_nav_links)
+        write_md_map(target,url_md_map, menu_map, page_nav_links)
     # now that we have the menu_map, the body and the navigation we can write the output blog:
     write_html_from_maps(target, theme, url_md_map, menu_map, page_nav_links)
     write_non_md_resoures(src, target)
 
+def spit(filename:str,content:str):
+    dir="/".join(filename.split('/')[:-1])
+    Path(dir).mkdir(parents=True, exist_ok=True)
+    with open(file=filename,mode='w') as f:
+        f.write(content)
 
-def write_md_map(url_md_map, menu_map, nav) -> None:
-    pass
+def menu_as_md(menu:Dict,indent=0)->str:
+    result=""
+    for k in menu:
+        result+=(indent*"\t")+f" - [{k}]({k})\n"
+        result+=menu_as_md(menu[k],indent+1)
+    return result
+
+def write_md_map(dir:str,url_md_map:Dict[str,MDFileData], menu_tree:Dict, nav_map:Dict[str,str]) -> None:
+    for key in url_md_map:
+        filename=dir+"/"+key
+        file_body=f"{menu_as_md(menu_tree)} \n\n\n{url_md_map[key].raw_file}\n\n\n{nav_map[key]}"
+        spit(filename,file_body)
 
 
 def write_html_from_maps(target, theme, url_md_map, menu_map, nav) -> None:
@@ -264,4 +313,5 @@ def write_html_from_maps(target, theme, url_md_map, menu_map, nav) -> None:
 def write_non_md_resoures(src, target) -> None:
     pass
 
-# build_blog()
+
+build_blog(debug='debug')

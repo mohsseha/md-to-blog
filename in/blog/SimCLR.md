@@ -1,4 +1,4 @@
-tags:	ML
+tags:	Machine_Learning
 
 # SimCLR: (almost) beating Supervised Learning 
 
