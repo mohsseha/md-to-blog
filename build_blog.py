@@ -59,12 +59,13 @@ from collections import namedtuple
 from pathlib import Path
 import markdown
 import shlex
+import shutil
 import datetime
 import re
 from pprint import pprint
 import glob, os
 from pathlib import Path
-
+from collections import defaultdict
 
 MDFileData = namedtuple('MDFileData', ['date', 'raw_file', 'html', "title", 'tags'])
 
@@ -90,12 +91,45 @@ def git_date(filename: str):
 from typing import Tuple, Dict, Iterable
 
 
+def embed_twitter(raw_file):
+    """
+    NOT IMPLEMENTED , the situation is a bit silly with twitter's embedding API:
+    https://stackoverflow.com/questions/41090108/how-to-embed-a-tweet-on-a-page-if-i-only-know-its-id
+    """
+    return raw_file
+
+
+def embed_img(raw_file):
+    return re.sub("^((?:.+)\.(?:jpeg|jpg|png|gif))$", r"![\1](\1)", raw_file, flags=re.MULTILINE | re.IGNORECASE)
+
+
+def embed_youtube(raw_file):
+    regex = r"^(?:https:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)$"
+    embd_pattern = r"""<iframe width="560" height="315" src="https://www.youtube.com/embed/\1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>"""
+    return re.sub(regex, embd_pattern, raw_file, flags=re.MULTILINE | re.IGNORECASE)
+
+
+def embed_pdf(raw_file):
+    """
+    goes from "https://arxiv.org/pdf/1905.11946.pdf" to:
+
+    """
+    regex = r"^(?:https:\/\/)?(?:arxiv.org\/pdf\/)(.+)$"
+    embed_pattern = r"""[Open PDF](https://arxiv.org/pdf/\1)
+    <iframe src="https://arxiv.org/pdf/\1" width="100%" height="500px">"""
+    return re.sub(regex, embed_pattern, raw_file, flags=re.MULTILINE | re.IGNORECASE)
+
+
 def md_to_html_converter(raw_file: str) -> Tuple[str, Dict]:
     '''
     :param raw_file: markdown
     :return: valid html
     '''
     md = markdown.Markdown(extensions=['meta'])
+    raw_file = embed_img(raw_file)
+    raw_file = embed_youtube(raw_file)
+    raw_file = embed_pdf(raw_file)
+    raw_file = embed_twitter(raw_file)
     return md.convert(raw_file), md.Meta
 
 
@@ -134,8 +168,8 @@ def summarize_post(filename: str, post: MDFileData) -> str:
         img_url = None
     assert date and title and filename, f"something is wrong with {filename} or {post}"
     return f"""{date}\n### {title}""" \
-           + (f"""\n!(preview)[{img_url}]""" if img_url else "") \
-           + f"""\n(Read More][{filename}]\n\n"""
+           + (f"""\n![preview](/blog/{img_url})""" if img_url else "") \
+           + f"""\n[Read More ...](/{filename})\n\n"""
 
 
 def make_MD_index(blog_items) -> MDFileData:
@@ -168,7 +202,7 @@ def add_blog_index_files(url_md_map):
     return url_md_map
 
 
-def find_menu_tree(url_md_map):
+def find_menu_tree(url_md_map) -> Dict:
     '''
     find navigation menu data structure based on webpage
     :param url_md_map: map of all posts and pages index by url
@@ -190,9 +224,6 @@ def find_menu_tree(url_md_map):
                 pt[l] = {}
             pt = pt[l]
     return result
-
-
-from collections import defaultdict
 
 
 def calc_blog_nav(blog_md_map: Dict[str, MDFileData]) -> Dict[str, str]:
@@ -281,37 +312,77 @@ def build_blog(src='in', target='out', theme='theme', debug=None) -> None:
     page_nav_links = calc_blog_nav({k: v for (k, v) in url_md_map.items() if k.startswith("blog")})
     page_nav_links.update(calc_non_blog_nav({k: v for (k, v) in url_md_map.items() if not k.startswith("blog")}))
     if debug:
-        write_md_map(target,url_md_map, menu_map, page_nav_links)
+        write_md_map(debug, url_md_map, menu_map, page_nav_links)
     # now that we have the menu_map, the body and the navigation we can write the output blog:
-    write_html_from_maps(target, theme, url_md_map, menu_map, page_nav_links)
-    write_non_md_resoures(src, target)
+    write_non_md_resoures(src, theme, target)  # Always run first -- DELETES out folder!!
+    write_html_from_maps(target, f"{theme}/base.html", url_md_map, menu_map, page_nav_links)
 
-def spit(filename:str,content:str):
-    dir="/".join(filename.split('/')[:-1])
+
+def spit(filename: str, content: str):
+    dir = "/".join(filename.split('/')[:-1])
     Path(dir).mkdir(parents=True, exist_ok=True)
-    with open(file=filename,mode='w') as f:
+    with open(file=filename, mode='w') as f:
         f.write(content)
 
-def menu_as_md(menu:Dict,indent=0)->str:
-    result=""
+
+def menu_as_md(menu: Dict, prefix=[]) -> str:
+    result = ""
+    indent = len(prefix)
     for k in menu:
-        result+=(indent*"\t")+f" - [{k}]({k})\n"
-        result+=menu_as_md(menu[k],indent+1)
+        link = "/".join(prefix + [k])
+        result += (indent * "\t") + f" - [{k}](/{link})\n"
+        result += menu_as_md(menu[k], prefix + [k])
     return result
 
-def write_md_map(dir:str,url_md_map:Dict[str,MDFileData], menu_tree:Dict, nav_map:Dict[str,str]) -> None:
+
+def write_md_map(dir: str, url_md_map: Dict[str, MDFileData], menu_tree: Dict, nav_map: Dict[str, str]) -> None:
+    shutil.rmtree(dir, ignore_errors=True)
     for key in url_md_map:
-        filename=dir+"/"+key
-        file_body=f"{menu_as_md(menu_tree)} \n\n\n{url_md_map[key].raw_file}\n\n\n{nav_map[key]}"
-        spit(filename,file_body)
+        filename = dir + "/" + key
+        file_body = f"{menu_as_md(menu_tree)} \n\n\n{url_md_map[key].raw_file}\n\n\n{nav_map[key]}"
+        spit(filename, file_body)
 
 
-def write_html_from_maps(target, theme, url_md_map, menu_map, nav) -> None:
-    pass
+def write_html_from_maps(target: str, template: str, url_md_map: Dict[str, MDFileData], menu_map: Dict,
+                         nav: Dict[str, str]) -> None:
+    print(f"writing webpage in: {target}")
+    template = Path(template).read_text(encoding='utf8')
+    for key in url_md_map:
+        doc = url_md_map[key]
+        body = doc.html
+        title = doc.title
+        menu_html, _ = md_to_html_converter(menu_as_md(menu_map))
+        nav_html, _ = md_to_html_converter(nav[key])
+        res = template.replace("{{TITLE}}", title)
+        res = res.replace("{{BODY}}", body)
+        res = res.replace("{{MENU}}", menu_html)
+        res = res.replace("{{NAV}}", nav_html)
+        p = re.compile('\\.md$')
+        out_filename = target + '/' + p.split(key)[0] + ".html"
+        spit(out_filename, res)
 
 
-def write_non_md_resoures(src, target) -> None:
-    pass
+def create_parent_and_copy(src: str, dest: str) -> None:
+    assert Path(dest).is_dir()
+    if Path(src).is_dir():
+        return
+    dest_dir = dest + '/' + '/'.join(src.split('/')[1:-1])
+    if not Path(dest_dir).is_dir():
+        os.makedirs(dest_dir, exist_ok=True)
+    shutil.copy(src, dest_dir)
+
+
+def write_non_md_resoures(src: str, theme: str, target: str) -> None:
+    # first remove file in output folder
+    shutil.rmtree(target)
+    os.makedirs(target)
+    # now copy assets:
+    for f in glob.glob(f"{theme}/**", recursive=True):
+        create_parent_and_copy(f, target)
+    for f in glob.glob(f"{src}/**", recursive=True):
+        if f.endswith(".md"):
+            continue
+        create_parent_and_copy(f, target)
 
 
 build_blog(debug='debug')

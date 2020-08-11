@@ -7,9 +7,9 @@ Date: 2019-01-01
 this is a first post. 
 
 here is an image: 
-[alternative text](under-construction.gif)
+under-construction.gif
 here is an other image: 
-![txt](under-construction.gif)
+under-construction.gif
 
 
-# [Can you get links in Title?](http://google.com) You can? 
+# [Can you get links in Title?](http://google.com) You can? good
