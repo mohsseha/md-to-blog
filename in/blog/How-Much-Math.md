@@ -1,15 +1,17 @@
 Tags: Machine_Learning
+Date: 2020-01-01
 
 # Test YouTube
 
 I've been watching this: 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fPJIUYU63Rc?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+https://www.youtube.com/watch?v=fPJIUYU63Rc
 
 (more about Summer Schools it in an other time for now: I recommend)
 
 I saw this gem: 
 
-!(pie chart)[pie-chart.png]
+pie-chart.png
 
-The Source material is (here)[https://towardsdatascience.com/the-mathematics-of-machine-learning-894f046c568] and it has a bunch of reasonable resources. Wish the chart was backed up by something more quantitate though 
+The Source material is [here](https://towardsdatascience.com/the-mathematics-of-machine-learning-894f046c568) and it has a bunch of reasonable resources. Wish the chart was backed up by something more quantitate though 
 

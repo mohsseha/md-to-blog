@@ -105,7 +105,7 @@ def embed_img(raw_file):
 
 def embed_youtube(raw_file):
     regex = r"^(?:https:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)$"
-    embd_pattern = r"""<iframe width="560" height="315" src="https://www.youtube.com/embed/\1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>"""
+    embd_pattern = r"""<p><iframe width="560" height="315" src="https://www.youtube.com/embed/\1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>"""
     return re.sub(regex, embd_pattern, raw_file, flags=re.MULTILINE | re.IGNORECASE)
 
 
@@ -115,8 +115,14 @@ def embed_pdf(raw_file):
 
     """
     regex = r"^(?:https:\/\/)?(?:arxiv.org\/pdf\/)(.+)$"
-    embed_pattern = r"""[Open PDF](https://arxiv.org/pdf/\1)
-    <iframe src="https://arxiv.org/pdf/\1" width="100%" height="500px">"""
+    embed_pattern = r"""[Open PDF](https://arxiv.org/pdf/\1)\n
+<p><iframe src="https://arxiv.org/pdf/\1" width="90%" height="500px"></iframe></p>"""
+    return re.sub(regex, embed_pattern, raw_file, flags=re.MULTILINE | re.IGNORECASE)
+
+
+def embed_regular_links(raw_file):
+    regex = r"^((?:http)(?:s*)(?::\/\/)?(?:.+))$"
+    embed_pattern = r"""[\1](\1)"""
     return re.sub(regex, embed_pattern, raw_file, flags=re.MULTILINE | re.IGNORECASE)
 
 
@@ -126,15 +132,20 @@ def md_to_html_converter(raw_file: str) -> Tuple[str, Dict]:
     :return: valid html
     '''
     md = markdown.Markdown(extensions=['meta'])
+    return md.convert(raw_file), md.Meta
+
+
+def embedding_filters(raw_file: str) -> str:
     raw_file = embed_img(raw_file)
     raw_file = embed_youtube(raw_file)
     raw_file = embed_pdf(raw_file)
     raw_file = embed_twitter(raw_file)
-    return md.convert(raw_file), md.Meta
+    raw_file = embed_regular_links(raw_file)  # ALWAYS LAST or it could break the others!
+    return raw_file
 
 
 def load_file(filename) -> MDFileData:
-    raw_file = Path(filename).read_text(encoding='utf8')
+    raw_file = embedding_filters(Path(filename).read_text(encoding='utf8'))
     html, meta = md_to_html_converter(raw_file)
     tags = next((v for (k, v) in meta.items() if 'tag' in k.lower()), [])  # take care of plural and case issues
     try:
@@ -167,9 +178,10 @@ def summarize_post(filename: str, post: MDFileData) -> str:
     except:
         img_url = None
     assert date and title and filename, f"something is wrong with {filename} or {post}"
+    filename_html = re.sub(r"(.+\.)md$", r"\1html", filename)
     return f"""{date}\n### {title}""" \
-           + (f"""\n![preview](/blog/{img_url})""" if img_url else "") \
-           + f"""\n[Read More ...](/{filename})\n\n"""
+           + (f"""\n![preview](/blog/{img_url})\n""" if img_url else "") \
+           + f"""\n[Read More ...](/{filename_html})\n\n"""
 
 
 def make_MD_index(blog_items) -> MDFileData:
@@ -239,14 +251,17 @@ def calc_blog_nav(blog_md_map: Dict[str, MDFileData]) -> Dict[str, str]:
         page_nav = ""
         if i > 0:
             link = nav_keys[i - 1]
+            link_html = re.sub(r"(.+\.)md$", r"\1html", link)
             post = blog_md_map[link]
             title = post.title
-            page_nav += f"<<[{title}]({link})"
+            page_nav += f"<<[{title}](/{link_html})"
+        page_nav += "______"
         if i < len(nav_keys) - 1:
             link = nav_keys[i + 1]
+            link_html = re.sub(r"(.+\.)md$", r"\1html", link)
             post = blog_md_map[link]
             title = post.title
-            page_nav += f"[{title}]({link})>>"
+            page_nav += f"[{title}](/{link_html})>>"
         result[k] = page_nav
     return result
 
@@ -260,8 +275,10 @@ def calc_non_blog_nav(other_md_map: Dict[str, MDFileData]) -> Dict[str, str]:
     for key, post in other_md_map.items():
         dir_menu = key.split('/')[:-1]
         page_nav = ""
-        for d in dir_menu:
-            page_nav += f"<< [{d}]({d})"
+        full_path_sub_dir = ""
+        for sub_dir in dir_menu:
+            full_path_sub_dir += "/" + sub_dir
+            page_nav += f"<< [{sub_dir}]({full_path_sub_dir})"
         result[key] = page_nav
     return result
 
@@ -276,9 +293,10 @@ def _create_non_blog_index_docs(dir: str) -> Dict[str, MDFileData]:
         raw_file = ""
         for sub_dir in rel_sub_dirs:
             raw_file += f"# [{sub_dir}]({sub_dir})\n"
-        for file in glob.glob(f"{dir}/*.md"):
-            f = file[len(dir) + 1:]
-            raw_file += f"### [{f}]({f})"
+        # keep private files private:
+        # for file in glob.glob(f"{dir}/*.md"):
+        #     f = file[len(dir) + 1:]
+        #     raw_file += f"### [{f}]({f})"
         new_index = MDFileData(date=datetime.datetime.now(),
                                raw_file=raw_file,
                                html=md_to_html_converter(raw_file)[0],
