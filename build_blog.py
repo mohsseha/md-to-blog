@@ -179,7 +179,7 @@ def summarize_post(filename: str, post: MDFileData) -> str:
         img_url = None
     assert date and title and filename, f"something is wrong with {filename} or {post}"
     filename_html = re.sub(r"(.+\.)md$", r"\1html", filename)
-    return f"""{date}\n### {title}""" \
+    return f"""{date}\n## [{title}](/{filename_html})""" \
            + (f"""\n![preview](/blog/{img_url})\n""" if img_url else "") \
            + f"""\n[Read More ...](/{filename_html})\n\n"""
 
