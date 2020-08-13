@@ -66,11 +66,11 @@ from pprint import pprint
 import glob, os
 from pathlib import Path
 from collections import defaultdict
+import mdfigure
 
 MDFileData = namedtuple('MDFileData', ['date', 'raw_file', 'html', "title", 'tags'])
 
 title_pattern = re.compile(".*^\# *(.*)$.*", re.MULTILINE)
-img_pattern = re.compile(".*^\!\[.*\]\((.*)\)$.*", re.MULTILINE)
 
 
 def git_date(filename: str):
@@ -131,7 +131,7 @@ def md_to_html_converter(raw_file: str) -> Tuple[str, Dict]:
     :param raw_file: markdown
     :return: valid html
     '''
-    md = markdown.Markdown(extensions=['meta'])
+    md = markdown.Markdown(extensions=['meta', mdfigure.FigureExtension()])
     return md.convert(raw_file), md.Meta
 
 
@@ -173,6 +173,7 @@ def summarize_post(filename: str, post: MDFileData) -> str:
     '''
     date = post.date
     title = post.title
+    img_pattern = re.compile(".*^\!\[.*\]\((.*)\)$.*", re.MULTILINE)
     try:
         img_url = img_pattern.findall(post.raw_file)[0]
     except:
@@ -254,14 +255,14 @@ def calc_blog_nav(blog_md_map: Dict[str, MDFileData]) -> Dict[str, str]:
             link_html = re.sub(r"(.+\.)md$", r"\1html", link)
             post = blog_md_map[link]
             title = post.title
-            page_nav += f"<<[{title}](/{link_html})"
-        page_nav += "______"
+            page_nav += f"&larr; [{title}](/{link_html})"
+        page_nav += 25*"&nbsp;"
         if i < len(nav_keys) - 1:
             link = nav_keys[i + 1]
             link_html = re.sub(r"(.+\.)md$", r"\1html", link)
             post = blog_md_map[link]
             title = post.title
-            page_nav += f"[{title}](/{link_html})>>"
+            page_nav += f" [{title}](/{link_html}) &rarr;"
         result[k] = page_nav
     return result
 
@@ -326,14 +327,16 @@ def build_blog(src='in', target='out', theme='theme', debug=None) -> None:
     url_md_map.update(create_non_blog_index_docs(src))
     # at this stage there are no folders without index files
 
-    menu_map = find_menu_tree(url_md_map)
+    menu_md = load_file(src+"/menu.md").raw_file
+    if menu_md is None:
+        menu_md = menu_as_md(find_menu_tree(url_md_map))
     page_nav_links = calc_blog_nav({k: v for (k, v) in url_md_map.items() if k.startswith("blog")})
     page_nav_links.update(calc_non_blog_nav({k: v for (k, v) in url_md_map.items() if not k.startswith("blog")}))
     if debug:
-        write_md_map(debug, url_md_map, menu_map, page_nav_links)
+        write_md_map(debug, url_md_map, menu_md, page_nav_links)
     # now that we have the menu_map, the body and the navigation we can write the output blog:
     write_non_md_resoures(src, theme, target)  # Always run first -- DELETES out folder!!
-    write_html_from_maps(target, f"{theme}/base.html", url_md_map, menu_map, page_nav_links)
+    write_html_from_maps(target, f"{theme}/base.html", url_md_map, menu_md, page_nav_links)
 
 
 def spit(filename: str, content: str):
@@ -353,15 +356,15 @@ def menu_as_md(menu: Dict, prefix=[]) -> str:
     return result
 
 
-def write_md_map(dir: str, url_md_map: Dict[str, MDFileData], menu_tree: Dict, nav_map: Dict[str, str]) -> None:
+def write_md_map(dir: str, url_md_map: Dict[str, MDFileData], menu_md: str, nav_map: Dict[str, str]) -> None:
     shutil.rmtree(dir, ignore_errors=True)
     for key in url_md_map:
         filename = dir + "/" + key
-        file_body = f"{menu_as_md(menu_tree)} \n\n\n{url_md_map[key].raw_file}\n\n\n{nav_map[key]}"
+        file_body = f"{menu_md} \n\n\n{url_md_map[key].raw_file}\n\n\n{nav_map[key]}"
         spit(filename, file_body)
 
 
-def write_html_from_maps(target: str, template: str, url_md_map: Dict[str, MDFileData], menu_map: Dict,
+def write_html_from_maps(target: str, template: str, url_md_map: Dict[str, MDFileData], menu_md: str,
                          nav: Dict[str, str]) -> None:
     print(f"writing webpage in: {target}")
     template = Path(template).read_text(encoding='utf8')
@@ -369,7 +372,7 @@ def write_html_from_maps(target: str, template: str, url_md_map: Dict[str, MDFil
         doc = url_md_map[key]
         body = doc.html
         title = doc.title
-        menu_html, _ = md_to_html_converter(menu_as_md(menu_map))
+        menu_html, _ = md_to_html_converter(menu_md)
         nav_html, _ = md_to_html_converter(nav[key])
         res = template.replace("{{TITLE}}", title)
         res = res.replace("{{BODY}}", body)

@@ -1,24 +1,54 @@
 <html>
 <head>
-<title>{{TITLE}}</title>
-<link rel="stylesheet" href="/css/tufte.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>{{TITLE}}</title>
+    <link rel="stylesheet" href="/css/tufte.min.css"/>
+    <link rel="stylesheet" href="/css/drop-down.css"/>
 </head>
 <body>
-<div id="menu">
-<!-- Navigation menu: probably a list-->
-{{MENU}}
+<!-- Navigation menu:-->
+
+<div class="menu">
+    <h2><span class="newthought"><a href="/">Husain.io</a></span></h2>
+    <p><span class="newthought" onclick="toggle(this)">Nav Menu <span id="plus">[+]</span><span id="minus" hidden="true">[-]</span> </span>
+    <div id="menu" class="nav-items" hidden="true">
+        {{MENU}}
+    </div>
+    </p>
 </div>
 
+<script>
+function toggle(e) {
+    menu=document.getElementById("menu")
+    menu.hidden=!menu.hidden
+    plus=document.getElementById("plus")
+    plus.hidden=!plus.hidden
+    minus=document.getElementById("minus")
+    minus.hidden=!minus.hidden
+}
 
-{{BODY}}
+function adjust_by_width(){
+if (window.innerWidth>600){toggle(this)}
+}
+
+window.onresize=adjust_by_width
+
+adjust_by_width()
+</script>
 
 
-<div id="nav">
-{{NAV}}
+<!-- Body of post/page -->
+<article>
+    {{BODY}}
+
+</article>
+
+<div class="nav">
+    {{NAV}}
 </div>
 
 </body>
-
 
 
 </html>
