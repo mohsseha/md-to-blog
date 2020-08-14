@@ -2,7 +2,7 @@ Tags: Management
 			Machine_Learning
 Date: 2020-07-01			
 			
-- AI & Traditional SAAS Businesses 
+# AI & Traditional SAAS Businesses 
 
 I was talking to a freind ([@dillonrgardner](https://twitter.com/dillonrgardner)) about this paper [a16z](https://a16z.com/2020/02/16/the-new-business-of-ai-and-how-its-different-from-traditional-software/) about how software margins and how AI plays will be part of the eco system. '
 
