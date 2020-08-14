@@ -1,22 +1,16 @@
-Tags:	Machine_Learning
-	    Software_engineering
+Tags:	Software_engineering
 Date: 2020-06-29
 
-# Making KFP Simple Again! 
+# Woodworking and Code
 
-While using KFP as a production back-end @ irobot my team hit a number of pain points for my team. They needed to: 
+I always think of good software engineering to be comparable to woodworking. Here is a coo
 
-- run locally and be productive
-- run on a cluster and not fight tooling, specifically KFP itself.  
+ https://woodgears.ca
 
-Here is an approach that I found to be very productive: 
+They are similar because: 
 
-- Use light weight component pipeline composition.
-- Standardized components (using [dockerfiles](http://www.docker.com)) to simplify debugging in different contexts.
+So many ways to produce the same thing 
 
-An example of this type of system can be seen here:
+The right tools can dramatically increase quality/decrease time to market 
 
-http://GitHub.com/mohsseha/simple-kfp 
-
-kfp.png
-
+Tool worship is a thing 
