@@ -15,7 +15,7 @@ I buy the basic premise: AI/ML business don't scale as well as SAAS as a general
 - **NB** Privacy laws and requirements can *substantially* affect the above costs and margins. 
     
     
-![NAS search]](https://3.bp.blogspot.com/-i_T7k1EMd9w/WRtucgbRx1I/AAAAAAAAB0w/ZKxPOsmZCt4hnqCT0nhhWyHRFdD-xssUgCLcB/s640/image1.png)
+![NAS search](SAAS-AI)
 
 
 One thing that I think is less important than what the article describes is the issue of inference and Moore's law effects: even in vision applications there are not that many DL models that are bottlenecked by processing power alone. The only exception to this is  in a safety critical space like driving where you need every. ounce. of. accuracy. 
