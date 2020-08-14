@@ -49,6 +49,7 @@ _______
 
 ## Tools
 I have evaluated, used and taught many tools over the years, some of my favorites: 
+
 - *Machine Learning & Data Science:* TensorFlow, CoreML, Apache Spark and Kubeflow Pipelines.
 - *Languages:* Wolfram, Clojure/ClojureScript, Java, Python and Scala (in that order) 
 - *Cloud and distributed systems*: I've been using linux since 0.96, and used it to build big and small systems on anything from hand-built HPC clusters to large scale AWS and GCP deployments. Most recently, I have been using Kubeflow Pipelines to train and validate ML models at the scale of 10's of millions of images.
@@ -70,6 +71,7 @@ One of two engineers representing the final technical authority for the selectio
 
 ## Patents 
 **20+ provisional and granted patents** in the areas of: 
+
 - Robotics 
 - Energy Management 
 - Machine Learning/DL 
@@ -79,6 +81,7 @@ An up to date list is [here](https://patents.google.com/?inventor=Husain+Al-Mohs
 
 ### Journals, Conferences and Periodicals
 I have a large body of well-cited academic work. A list can be found [here](https://scholar.google.com/citations?user=CugFCugAAAAJ&hl=en&oi=ao). I am particularly proud of my invited talks, papers and chapters: 
+
 1. *Applying Big Data approaches to publication social networks*, Boston, Hack/Reduce: BDM, December 14, 2014.
 2. *National Science & Technology Innovation Plan: Program[X], The Flagship Projects & Innovation Networks*, Advanced Technology Forum, 2014, Riyadh, Saudi Arabia, September 16 - 18 2014. 
 3. Al-Mohssen, H.A., Hadjiconstantinou, N.G.; *Low-variance direct Monte Carlo simulations using importance weights*, Mathematical Modeling and Numerical Analysis, Volume 44, Number 5, September-October 2010.
@@ -87,6 +90,7 @@ I have a large body of well-cited academic work. A list can be found [here](http
 6. *Designing and Manufacturing Practical Nano/Micro Devices Using Molecular/Boltzmann Flow Simulation Tools*, KFUPM, December 14, 2010.
 7. *Retrofitting Multijack Tensioners on a combustion gas turbine generator*, Hydrocarbon Processing Magazine, Vol. 81 No. 1, January 2002.
 8. *Linux and the Future*, Linux Gazette, Issue 46, October 1999.
+
 
 ## Awards
 - TAKREEM Young Entrepreneur Award finalist (2010) and TAKREEM Advisory Board Member (2011).
