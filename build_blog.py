@@ -180,9 +180,13 @@ def summarize_post(filename: str, post: MDFileData) -> str:
         img_url = None
     assert date and title and filename, f"something is wrong with {filename} or {post}"
     filename_html = re.sub(r"(.+\.)md$", r"\1html", filename)
-    return f"""{human_readable_date(date)}\n## [{title}](/{filename_html})""" \
-           + (f"""\n![preview](/blog/{img_url})\n""" if img_url else "") \
-           + f"""\n[Read More ...](/{filename_html})\n\n"""
+    return f"""## [{title}](/{filename_html})""" \
+           + (f"""\n![ ](/blog/{img_url})\n""" if img_url else "") \
+           + f"""\n{human_readable_date(date)} """ \
+           + '<span class="sans">' + "Tags: " + ", ".join(
+        ("[" + t + "](/blog/" + t + ")" for t in post.tags)) + '</span>'  \
+        +"\n***\n"
+    # + f"""\n[Read More ...](/{filename_html})\n\n"""
 
 
 def make_MD_index(blog_items) -> MDFileData:
@@ -353,7 +357,7 @@ def human_readable_date(dt: datetime.datetime) -> str:
     def dt_style(dt, f):
         return dt.strftime(f).replace("{th}", ord(dt.day))
 
-    return dt_style(dt, '%a %b the {th}, %Y')
+    return dt_style(dt, '%a, %b the {th}, %Y')
 
 
 def menu_as_md(menu: Dict, prefix=[]) -> str:
