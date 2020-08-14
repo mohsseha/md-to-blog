@@ -342,7 +342,7 @@ def build_blog(src='in', target='out', theme='theme', debug=None) -> None:
 def spit(filename: str, content: str):
     dir = "/".join(filename.split('/')[:-1])
     Path(dir).mkdir(parents=True, exist_ok=True)
-    with open(file=filename, mode='w') as f:
+    with open(file=filename, mode='w',encoding="utf-8") as f:
         f.write(content)
 
 
