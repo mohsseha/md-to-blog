@@ -11,6 +11,7 @@ I am a team leader with a proven record of building and managing software engine
 
 ### Manager, ML Modeling, iRobot — 2018 -
 I was internally recruited to develop the marquee feature of next-gen robots. My team's focus is on: 
+
 - **ML Research & Development** of robot embedded CNN models that:  
 	- have repeatable SOTA performance in *millions of homes*
 	- are optimized for multiple tasks
@@ -22,6 +23,7 @@ I was internally recruited to develop the marquee feature of next-gen robots. My
 	- IP/patent production (more details below)
 
 As the team leader I focus on: 
+
 - *Product strategy* developing ML product roadmaps that meet PM, UX and cost constraints 
 - *Scientific leadership* help my team review and build on latest DL/ML literature.
 - *Software architecture* selecting the right tools and vendors to support our data pipeline and training needs. 
