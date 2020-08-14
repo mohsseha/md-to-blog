@@ -1,6 +1,6 @@
 <!--This optional File is used to allow the creation custom menu orders etc*/--> 
 
- - [All Posts😊😊😊😊😊😊](/blog):
+ - [All Posts](/blog):
 	 - [Management](/blog/Management)
 	 - [Machine_Learning](/blog/Machine_Learning)
  - [About](/About)

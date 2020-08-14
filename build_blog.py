@@ -180,7 +180,7 @@ def summarize_post(filename: str, post: MDFileData) -> str:
         img_url = None
     assert date and title and filename, f"something is wrong with {filename} or {post}"
     filename_html = re.sub(r"(.+\.)md$", r"\1html", filename)
-    return f"""{date}\n## [{title}](/{filename_html})""" \
+    return f"""{human_readable_date(date)}\n## [{title}](/{filename_html})""" \
            + (f"""\n![preview](/blog/{img_url})\n""" if img_url else "") \
            + f"""\n[Read More ...](/{filename_html})\n\n"""
 
@@ -256,7 +256,7 @@ def calc_blog_nav(blog_md_map: Dict[str, MDFileData]) -> Dict[str, str]:
             post = blog_md_map[link]
             title = post.title
             page_nav += f"&larr; [{title}](/{link_html})"
-        page_nav += 25*"&nbsp;"
+        page_nav += 25 * "&nbsp;"
         if i < len(nav_keys) - 1:
             link = nav_keys[i + 1]
             link_html = re.sub(r"(.+\.)md$", r"\1html", link)
@@ -327,7 +327,7 @@ def build_blog(src='in', target='out', theme='theme', debug=None) -> None:
     url_md_map.update(create_non_blog_index_docs(src))
     # at this stage there are no folders without index files
 
-    menu_md = load_file(src+"/menu.md").raw_file
+    menu_md = load_file(src + "/menu.md").raw_file
     if menu_md is None:
         menu_md = menu_as_md(find_menu_tree(url_md_map))
     page_nav_links = calc_blog_nav({k: v for (k, v) in url_md_map.items() if k.startswith("blog")})
@@ -342,8 +342,18 @@ def build_blog(src='in', target='out', theme='theme', debug=None) -> None:
 def spit(filename: str, content: str):
     dir = "/".join(filename.split('/')[:-1])
     Path(dir).mkdir(parents=True, exist_ok=True)
-    with open(file=filename, mode='w',encoding="utf-8") as f:
+    with open(file=filename, mode='w', encoding="utf-8") as f:
         f.write(content)
+
+
+def human_readable_date(dt: datetime.datetime) -> str:
+    def ord(n):
+        return str(n) + ("th" if 4 <= n % 100 <= 20 else {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th"))
+
+    def dt_style(dt, f):
+        return dt.strftime(f).replace("{th}", ord(dt.day))
+
+    return dt_style(dt, '%a %b the {th}, %Y')
 
 
 def menu_as_md(menu: Dict, prefix=[]) -> str:
