@@ -1,5 +1,5 @@
 
-# Welcome to Husain Al-Mohssen's Blog! 
+# Welcome to Husain Al-Mohssen's [Blog](/blog)! 
 
 I keep my [blog](/blog) and other useful things here. 
 
