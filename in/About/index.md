@@ -6,7 +6,7 @@ me.jpg
 
 Here are a few of my favorite things: 
 
-- Building Things (using computers)
+- [Building Things (using computers)](/blog/software_engineering)
 - [Machine Learning](/blog/Machine_Learning)
 - [Helping people (and teams) grow](/blog/management)
 - My guilty pleasure: [Clojure(Script)](http://clojure.org)
