@@ -409,7 +409,7 @@ def create_parent_and_copy(src: str, dest: str) -> None:
 
 def write_non_md_resoures(src: str, theme: str, target: str) -> None:
     # first remove file in output folder
-    shutil.rmtree(target)
+    shutil.rmtree(target,ignore_errors=True)
     os.makedirs(target)
     # now copy assets:
     for f in glob.glob(f"{theme}/**", recursive=True):
