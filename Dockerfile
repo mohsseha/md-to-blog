@@ -3,11 +3,14 @@ MAINTAINER Husain Al-Mohssen (husain@domain)
 
 WORKDIR /root
 
+RUN curl -sSL https://sdk.cloud.google.com | bash
 
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt --no-cache-dir
 
 COPY *.py . 
 
+COPY in . 
+COPY theme .
 
-CMD ["python3"]
+CMD ["python3" "build_blog.py"]
