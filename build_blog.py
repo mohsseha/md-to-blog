@@ -165,6 +165,11 @@ def load_md_files(src: str):
     return {file_name[len(src) + 1:]: load_file(file_name) for file_name in glob.glob(f"{src}/**/*md", recursive=True)}
 
 
+def post_tags_as_string(tags)->str:
+    return '<span class="sans">' + "Tags: " + ", ".join(
+        ("[" + t + "](/blog/" + t + ")" for t in tags)) + '</span>'
+
+
 def summarize_post(filename: str, post: MDFileData) -> str:
     '''
     takes a MD file and takes out the Title (pre-fixed with #) and the first image and return as md
@@ -183,8 +188,7 @@ def summarize_post(filename: str, post: MDFileData) -> str:
     return f"""## [{title}](/{filename_html})""" \
            + (f"""\n![ ](/blog/{img_url})\n""" if img_url else "") \
            + f"""\n{human_readable_date(date)} """ \
-           + '<span class="sans">' + "Tags: " + ", ".join(
-        ("[" + t + "](/blog/" + t + ")" for t in post.tags)) + '</span>'  \
+           + post_tags_as_string(post.tags) \
         +"\n***\n"
     # + f"""\n[Read More ...](/{filename_html})\n\n"""
 
