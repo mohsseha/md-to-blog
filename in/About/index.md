@@ -24,7 +24,7 @@ my
 
 [Courses @ General Assembly](https://generalassemb.ly/instructors/husain-al-mohssen/11766)
 
-[YouTube]()
+[YouTube](https://www.youtube.com/channel/UCfik4WDJokKNHJq5Py8WfwA)
 
 
 
