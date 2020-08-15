@@ -158,7 +158,7 @@ def load_file(filename) -> MDFileData:
     except:
         date = git_date(filename)
         # print(f"file={filename}, md={meta}")
-    return MDFileData(date=date, raw_file=raw_file, html=html, title=title, tags=tags)
+    return MDFileData(date=date, raw_file=raw_file, html=html, title=title, tags=[t.lower() for t in tags])
 
 
 def load_md_files(src: str):
