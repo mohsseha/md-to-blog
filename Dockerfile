@@ -8,12 +8,8 @@ RUN curl -sSL https://sdk.cloud.google.com | bash
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt --no-cache-dir
 
-RUN mkdir in
-RUN mkdir theme
+RUN mkdir md-to-blog
 
-COPY *.py . 
+COPY . md-to-blog 
 
-COPY in ./in 
-COPY theme ./theme
-
-CMD ["python3" "build_blog.py"]
+CMD ["python3" "md-to-blog/build_blog.py"]
