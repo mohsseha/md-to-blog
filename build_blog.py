@@ -181,12 +181,14 @@ def summarize_post(filename: str, post: MDFileData) -> str:
     img_pattern = re.compile(".*^\!\[.*\]\((.*)\)$.*", re.MULTILINE)
     try:
         img_url = img_pattern.findall(post.raw_file)[0]
+        if not re.match(r"^(http)s*(:\/\/).*",img_url):
+            img_url=f"/blog/{img_url}"
     except:
         img_url = None
     assert date and title and filename, f"something is wrong with {filename} or {post}"
     filename_html = re.sub(r"(.+\.)md$", r"\1html", filename)
     return f"""## [{title}](/{filename_html})""" \
-           + (f"""\n![ ](/blog/{img_url})\n""" if img_url else "") \
+           + (f"""\n![ ]({img_url})\n""" if img_url else "") \
            + f"""\n{human_readable_date(date)} """ \
            + post_tags_as_string(post.tags) \
         +"\n***\n"

@@ -7,7 +7,7 @@ Tags: Books
 
 I really enjoyed this book: 
 
-13593553.jpg
+to_sell_is_human_book.jpg
 
 Details [here](https://www.goodreads.com/book/show/13593553-to-sell-is-human)
 
