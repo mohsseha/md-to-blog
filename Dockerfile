@@ -13,4 +13,5 @@ RUN mkdir md-to-blog
 
 COPY . md-to-blog 
 
-CMD ["python3" "md-to-blog/build_blog.py"]
+WORKDIR /root/md-to-blog
+CMD ["python3" "build_blog.py"]
