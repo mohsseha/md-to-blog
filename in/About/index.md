@@ -16,15 +16,15 @@ Here are a few of my favorite things:
 
 my
 
-LinkedIn
+[LinkedIn]()
 
-GitHub
+[GitHub](https://github.com/mohsseha)
 
-Twitter
+[Twitter](https://www.twitter.com/husainalmohssen)
 
-Courses @ General Assembly 
+[Courses @ General Assembly](https://generalassemb.ly/instructors/husain-al-mohssen/11766)
 
-YouTube
+[YouTube]()
 
 
 
