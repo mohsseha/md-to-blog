@@ -11,3 +11,26 @@
 	 - [Academic](/Resources/Academic)
 	 - [Interview-Prep](/Resources/Interview-Prep)
  	 - [Presentations-n-code](/Presentations-n-code)
+
+<!-- Proposed new Outline: 
+- Blog
+    -teams
+    -ML and AI
+    - Movies
+    - Software Engineering 
+- About 
+- Teaching
+    -Software engineering 
+    - Youtube? 
+
+
+
+My online presence is a product of 
+# ML
+# Teaching
+# Academic
+# Movies & Books
+# Management 
+# Software Engineering 
+# 
+-->
