@@ -1,11 +1,13 @@
 <!--This optional File is used to allow the creation custom menu orders etc*/--> 
 
  - [All Posts](/blog):
-	 - [Management](/blog/Management)
-	 - [Machine_Learning](/blog/Machine_Learning)
+	 - [Working in Teams](/blog/management)
+	 - [Machine Learning & AI](/blog/machine_learning)
+     - [Movies](/blog/movies)
+     - [Software Engineering](/blog/software_engineering)
  - [About](/About)
- - [Teaching](/Resorces)
-	 - [ML-Papers](/Resorces/ML-Papers)
-	 - [Academic](/Resorces/Academic)
-	 - [Interview-Prep](/Resorces/Interview-Prep)
+ - [Teaching](/Resources)
+	 - [ML-Papers](/Resources/ML-Papers)
+	 - [Academic](/Resources/Academic)
+	 - [Interview-Prep](/Resources/Interview-Prep)
  	 - [Presentations-n-code](/Presentations-n-code)
