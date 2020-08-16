@@ -156,11 +156,16 @@ def load_file(filename) -> MDFileData:
     except:
         date = git_date(filename)
         # print(f"file={filename}, md={meta}")
-    return MDFileData(date=date, raw_file=raw_file, html=html, title=title, tags=tags)
+    return MDFileData(date=date, raw_file=raw_file, html=html, title=title, tags=[t.lower() for t in tags])
 
 
 def load_md_files(src: str):
     return {file_name[len(src) + 1:]: load_file(file_name) for file_name in glob.glob(f"{src}/**/*md", recursive=True)}
+
+
+def post_tags_as_string(tags)->str:
+    return '<span class="sans">' + "Tags: " + ", ".join(
+        ("[" + t + "](/blog/" + t + ")" for t in tags)) + '</span>'
 
 
 def summarize_post(filename: str, post: MDFileData) -> str:
@@ -174,15 +179,16 @@ def summarize_post(filename: str, post: MDFileData) -> str:
     img_pattern = re.compile(".*^\!\[.*\]\((.*)\)$.*", re.MULTILINE)
     try:
         img_url = img_pattern.findall(post.raw_file)[0]
+        if not re.match(r"^(http)s*(:\/\/).*",img_url):
+            img_url=f"/blog/{img_url}"
     except:
         img_url = None
     assert date and title and filename, f"something is wrong with {filename} or {post}"
     filename_html = re.sub(r"(.+\.)md$", r"\1html", filename)
     return f"""## [{title}](/{filename_html})""" \
-           + (f"""\n![ ](/blog/{img_url})\n""" if img_url else "") \
+           + (f"""\n![ ]({img_url})\n""" if img_url else "") \
            + f"""\n{human_readable_date(date)} """ \
-           + '<span class="sans">' + "Tags: " + ", ".join(
-        ("[" + t + "](/blog/" + t + ")" for t in post.tags)) + '</span>'  \
+           + post_tags_as_string(post.tags) \
         +"\n***\n"
     # + f"""\n[Read More ...](/{filename_html})\n\n"""
 
