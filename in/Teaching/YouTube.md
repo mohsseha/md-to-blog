@@ -7,6 +7,7 @@ It's amazing what you can learn for free.
 ## My General Assembly Playlist
 
 When I teach the [Data Science Immersive](https://generalassemb.ly/education/data-science-immersive/boston) program I tend to point my students to this playlist to help give them a different perspective on the class material: 
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLPUybmlC9fxpr3KOHocoXXdboPCve0b9c" frameborder="5" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 [play in new window](https://www.youtube.com/embed/videoseries?list=PLPUybmlC9fxpr3KOHocoXXdboPCve0b9c)

@@ -6,10 +6,10 @@
      - [Movies](/blog/movies)
      - [Software Engineering](/blog/software_engineering)
  - [About](/About)
- - [Teaching](/Resources)
-	 - [ML-Papers](/Resources/ML-Papers)
-	 - [Academic](/Resources/Academic)
-	 - [Interview-Prep](/Resources/Interview-Prep)
+ - [Teaching](/Teaching)
+	 - [ML-Papers](/Teaching/ML-Papers)
+	 - [Academic](/Teaching/Academic)
+	 - [Interview-Prep](/Teaching/Interview-Prep)
  	 - [Presentations-n-code](/Presentations-n-code)
 
 <!-- Proposed new Outline: 
@@ -32,5 +32,5 @@ My online presence is a product of
 # Movies & Books
 # Management 
 # Software Engineering 
-# 
+# Professional Talks? 
 -->
