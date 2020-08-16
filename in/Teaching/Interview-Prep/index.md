@@ -11,6 +11,7 @@ Interview methods and prep is a decisive topic. On the one hand you want to make
 * Intermediate videos here
 
 * The standard book: http://www.crackingthecodinginterview.com/ is a great resource if you stop fighting it.
+* pretty good repo: https://github.com/labuladong/fucking-algorithm/tree/english
 
 * an intresting reddit thread [python focused](https://www.reddit.com/r/Python/comments/1knw7z/python_interview_questions/)
 
