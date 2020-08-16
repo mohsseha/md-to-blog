@@ -66,6 +66,7 @@ from pprint import pprint
 import glob, os
 from pathlib import Path
 from collections import defaultdict
+from typing import Tuple, Dict, Iterable
 import mdfigure
 
 MDFileData = namedtuple('MDFileData', ['date', 'raw_file', 'html', "title", 'tags'])
@@ -73,7 +74,7 @@ MDFileData = namedtuple('MDFileData', ['date', 'raw_file', 'html', "title", 'tag
 title_pattern = re.compile(".*^\# *(.*)$.*", re.MULTILINE)
 
 
-def git_date(filename: str):
+def git_date(filename: str)->datetime.datetime:
     from subprocess import Popen, PIPE
     result = datetime.datetime.now()  # default value
     try:
@@ -86,9 +87,6 @@ def git_date(filename: str):
         result = datetime.datetime.fromtimestamp(unix_time)
     finally:
         return result
-
-
-from typing import Tuple, Dict, Iterable
 
 
 def embed_twitter(raw_file):
