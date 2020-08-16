@@ -415,7 +415,7 @@ def create_parent_and_copy(src: str, dest: str) -> None:
 
 def write_non_md_resoures(src: str, theme: str, target: str) -> None:
     # first remove file in output folder
-    shutil.rmtree(target)
+    shutil.rmtree(target,ignore_errors=True)
     os.makedirs(target)
     # now copy assets:
     for f in glob.glob(f"{theme}/**", recursive=True):
@@ -425,5 +425,12 @@ def write_non_md_resoures(src: str, theme: str, target: str) -> None:
             continue
         create_parent_and_copy(f, target)
 
+import subprocess
 
-build_blog(debug='debug')
+if __name__=="__main__":
+    gs_bucket="husain.io"
+    out_dir='out'
+    build_blog(src='in', target=out_dir, theme='theme', debug=None)
+    # copying the output to the correct bucket: 
+    subprocess.call(f"gsutil -m rsync -r -d {out_dir} gs://{gs_bucket}/",shell=True)
+    
