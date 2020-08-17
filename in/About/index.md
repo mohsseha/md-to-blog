@@ -16,11 +16,11 @@ Here are a few of my favorite things:
 
 my
 
-[LinkedIn]()
-
-[GitHub](https://github.com/mohsseha)
-
-[Twitter](https://www.twitter.com/husainalmohssen)
+- [papers](http://scholar.google.com/citations?user=CugFCugAAAAJ&hl=en)
+- [patents](https://patents.google.com/?inventor=Husain+al-mohssen&oq=Husain+al-mohssen)
+- [LinkedIn]()
+- [GitHub](https://github.com/mohsseha)
+- [Twitter](https://www.twitter.com/husainalmohssen)
 
 [Courses @ General Assembly](https://generalassemb.ly/instructors/husain-al-mohssen/11766)
 
