@@ -19,17 +19,15 @@ Here are a few of my favorite things:
 - [Movies](/blog/Movies)   
 
 
-my
+My:
 
-- [papers](http://scholar.google.com/citations?user=CugFCugAAAAJ&hl=en)
-- [patents](https://patents.google.com/?inventor=Husain+al-mohssen&oq=Husain+al-mohssen)
+- [Papers](http://scholar.google.com/citations?user=CugFCugAAAAJ&hl=en)
+- [Patents](https://patents.google.com/?inventor=Husain+al-mohssen&oq=Husain+al-mohssen)
 - [LinkedIn]()
 - [GitHub](https://github.com/mohsseha)
 - [Twitter](https://www.twitter.com/husainalmohssen)
-
-[Courses @ General Assembly](https://generalassemb.ly/instructors/husain-al-mohssen/11766)
-
-[YouTube](https://www.youtube.com/channel/UCfik4WDJokKNHJq5Py8WfwA)
+- [Courses @ General Assembly](https://generalassemb.ly/instructors/husain-al-mohssen/11766)
+- [YouTube](https://www.youtube.com/channel/UCfik4WDJokKNHJq5Py8WfwA)
 
 
 
