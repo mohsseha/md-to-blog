@@ -199,7 +199,11 @@ def make_MD_index(blog_items) -> MDFileData:
     :return: index document sorted by dates
     '''
     sorted_posts = {k: v for (k, v) in sorted(blog_items.items(), key=lambda kv: kv[1].date, reverse=True)}
-    raw_file = ""
+    raw_file = """<p>
+    <label for="mn-figure-1" class="margin-toggle">⊕</label><input type="checkbox" id="mn-figure-1" class="margin-toggle">
+    <span class="marginnote">
+    <a class="twitter-timeline" data-width="220" href="https://twitter.com/husainAlmohssen?ref_src=twsrc%5Etfw">Tweets by husainAlmohssen</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>        
+    </span></p>\n\n"""
     for post in (summarize_post(k, v) for (k, v) in sorted_posts.items()):
         raw_file = raw_file + post
     html, _ = md_to_html_converter(raw_file)
@@ -384,7 +388,7 @@ def write_md_map(dir: str, url_md_map: Dict[str, MDFileData], menu_md: str, nav_
 
 def write_html_from_maps(target: str, template: str, url_md_map: Dict[str, MDFileData], menu_md: str,
                          nav: Dict[str, str]) -> None:
-    print(f"writing webpage in: {target}")
+    print(f"writing webpage to ./{target}")
     template = Path(template).read_text(encoding='utf8')
     for key in url_md_map:
         doc = url_md_map[key]

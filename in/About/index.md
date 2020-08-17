@@ -1,4 +1,9 @@
 
+<p>
+    <label for="mn-figure-1" class="margin-toggle">⊕</label><input type="checkbox" id="mn-figure-1" class="margin-toggle">
+    <span class="marginnote">
+    <a class="twitter-timeline" data-width="220" href="https://twitter.com/husainAlmohssen?ref_src=twsrc%5Etfw">Tweets by husainAlmohssen</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></span>
+</p>
 
 # About Husain
 
