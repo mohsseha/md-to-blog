@@ -16,7 +16,7 @@ Here are a few of my favorite things:
 - [Helping people (and teams) grow](/blog/management)
 - My guilty pleasure: [Clojure(Script)](http://clojure.org)
 - [High Performance Computing](http://web.mit.edu/husain/www/)
-- [Movies](/blog/Movies)   
+- [Movies](/blog/movies)   
 
 
 My:
