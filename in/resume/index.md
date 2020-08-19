@@ -13,18 +13,18 @@ I am a team leader with a proven record of building and managing software engine
 I was internally recruited to develop the marquee feature of next-gen robots. My team's focus is on: 
 
 - **ML Research & Development** of robot embedded CNN models that:  
-	- have repeatable SOTA performance in *millions of homes*
-	- are optimized for multiple tasks
+	- have repeatable SOTA performance in *millions of homes*.
+	- are optimized for multiple tasks.
 - **Designing and implementing data collection processes and infrastructure** including: 
-	- guaranteeing user privacy 
-	- cost effective labeling and synthetic data generation
+	- guaranteeing user privacy.
+	- cost effective labeling and synthetic data generation.
 - **Corporate ML technology support:** 
-	- Collaborate with iRobot Ventures to find partners/investments
-	- IP/patent production (more details below)
+	- Collaborate with iRobot Ventures to find partners/investments.
+	- IP/patent production (more details below).
 
 As the team leader I focus on: 
 
-- *Product strategy* developing ML product roadmaps that meet PM, UX and cost constraints 
+- *Product strategy* developing ML product roadmaps that meet PM, UX and cost constraints. 
 - *Scientific leadership* help my team review and build on latest DL/ML literature.
 - *Software architecture* selecting the right tools and vendors to support our data pipeline and training needs. 
 - *Team growth* Our team grew from a couple of interns to a team of 25+. I Interviewed 100's of candidates and worked with HR to enhance our team's *diversity*. 
