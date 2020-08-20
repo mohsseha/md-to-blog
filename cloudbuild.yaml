@@ -1,8 +1,10 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/blog:latest', '.']
+  args: ['rmi', 'gcr.io/$PROJECT_ID/blog']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/blog/XXX:latest', '.']
   timeout: 500s
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/blog:latest']
+  args: ['push', 'gcr.io/$PROJECT_ID/blog/XXX:latest']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['run', 'gcr.io/$PROJECT_ID/blog:latest']
+  args: ['run', 'gcr.io/$PROJECT_ID/blog/XXX:latest']
