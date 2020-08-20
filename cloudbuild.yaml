@@ -1,3 +1,3 @@
 steps:
-- name: gcr.io/myvalet-174221/md-to-blog@sha256:43c5bd6810ba87d544f094275d22511b11e8fdae462344511d8cfe6a6b82a2df
+- name: gcr.io/myvalet-174221/github.com/mohsseha/md-to-blog@sha256:60ac8b19376f9f75eecdcdecca725e7aa6b7f87d60814f29c65777192d12053c
   entrypoint: ./run.sh
