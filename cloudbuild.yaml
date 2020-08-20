@@ -2,3 +2,5 @@ steps:
 - name: 'docker'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/blog', '.']
 images: ['gcr.io/$PROJECT_ID/blog']
+- name: 'docker'
+  args: ['run', 'gcr.io/$PROJECT_ID/blog']
