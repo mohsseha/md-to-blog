@@ -12,7 +12,6 @@ RUN pip3 install -r requirements.txt --no-cache-dir
 RUN mkdir md-to-blog
 
 COPY . md-to-blog 
-COPY .git md-to-blog/
 
 WORKDIR /root/md-to-blog
 CMD ["python3" , "build_blog.py"]
