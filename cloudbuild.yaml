@@ -1,3 +1,4 @@
 steps:
-- name: gcr.io/myvalet-174221/github.com/mohsseha/md-to-blog@sha256:60ac8b19376f9f75eecdcdecca725e7aa6b7f87d60814f29c65777192d12053c
-  entrypoint: ./run.sh
+- name: 'docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/blog', '.']
+images: ['gcr.io/$PROJECT_ID/blog']
