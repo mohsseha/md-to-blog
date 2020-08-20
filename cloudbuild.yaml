@@ -1,0 +1,4 @@
+steps:
+- name: gcr.io/cloud-builders/gcloud
+  entrypoint: python3
+  args: ['build_blog.py']
