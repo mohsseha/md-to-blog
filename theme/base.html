@@ -1,36 +1,38 @@
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>{{TITLE}}</title>
-    <link rel="stylesheet" href="/css/tufte.min.css"/>
-    <link rel="stylesheet" href="/css/drop-down.css"/>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-175631787-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>{{TITLE}}</title>
+	<link rel="stylesheet" href="/css/tufte.min.css" />
+	<link rel="stylesheet" href="/css/drop-down.css" />
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-175631787-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'UA-175631787-1');
-</script>
+	</script>
 
 </head>
+
 <body>
-<!-- Navigation menu:-->
+	<!-- Navigation menu:-->
 
-<div class="menu">
-    <h2><span class="newthought"><a href="/">Husain.io</a></span></h2>
-    <p><span class="newthought" onclick="toggle(this)">Nav Menu <span id="plus">[+]</span><span id="minus" hidden="true">[-]</span>:</span>
-    <div id="menu" class="nav-items" hidden="true">
-        {{MENU}}
-    </div>
-    </p>
-</div>
+	<div class="menu">
+		<h2><span class="newthought"><a href="/">Husain.io</a></span>
+			<span onclick="toggle(this)"><span id="plus">[+]</span><span id="minus" hidden="true">[-]</span></span>
+		</h2>
+		<div id="menu" class="nav-items" hidden="true">
+			{{MENU}}
+		</div>
+	</div>
 
-<script>
-function toggle(e) {
+	<script>
+		function toggle(e) {
     menu=document.getElementById("menu")
     menu.hidden=!menu.hidden
     plus=document.getElementById("plus")
@@ -46,19 +48,19 @@ if (window.innerWidth>600){toggle(this)}
 window.onresize=adjust_by_width
 
 adjust_by_width()
-</script>
+	</script>
 
 
-<!-- Body of post/page -->
-<article>
-    <section>
-    {{BODY}}
-    </section>
-</article>
+	<!-- Body of post/page -->
+	<article>
+		<section>
+			{{BODY}}
+		</section>
+	</article>
 
-<div class="nav">
-    {{NAV}}
-</div>
+	<div class="nav">
+		{{NAV}}
+	</div>
 
 </body>
 
