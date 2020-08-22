@@ -4,9 +4,21 @@ Tags: Movies_n_books
 Date: 2020-06-17
 			
 			
-# Death of Stalin & Team Dynamics
+# Team Dynamics of "Death of Stalin"  
 
-https://www.youtube.com/watch?v=E9eAshaPvYw&feature=emb_title
+death.jpg
+
+This is one of my favorite movies ever. Historically, it is It’s shockingly accurate (sadly). 
+
+A Theme I love about this movie is the universality of organizational dynamics. Despite the very different context of these events many of the team dynamics are identical to what you will find in (even tech) companies in the '20s. I particularly loved two cool ideas that you can see in the movie: 
+
+- Even team members with a lot of social/actual capital have to bring others along or even account for where other players are. 
+- Process and practice can give team members unexpected advantages 
+- There is always a varing amount of randomness than can never be controlled
+
+Highly recommended!
+
+https://www.youtube.com/watch?v=kPpXFnHoC-0
 
 
-This is one of my favorite movies. It’s shockingly historically accurate. One theme that I love about this movie is how universal organizational dynamics are even when the system constraints are so different from our daily lives. 
+

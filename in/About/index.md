@@ -17,11 +17,11 @@ I wanted to make this blog to share my thoughts about things that I care about:
 - [High Performance Computing](http://web.mit.edu/husain/www/)
 
 
-My:
+My stuff online:
 
-- [Papers](http://scholar.google.com/citations?user=CugFCugAAAAJ&hl=en)
-- [Patents](https://patents.google.com/?inventor=Husain+al-mohssen&oq=Husain+al-mohssen)
 - [LinkedIn](https://www.linkedin.com/in/husainalmohssen/)
+- [Google Scholar Papers](http://scholar.google.com/citations?user=CugFCugAAAAJ&hl=en)
+- [Patents](https://patents.google.com/?inventor=Husain+al-mohssen&oq=Husain+al-mohssen)
 - [GitHub](https://github.com/mohsseha)
 - [Twitter](https://www.twitter.com/husainalmohssen)
 - [My Courses @ General Assembly](https://generalassemb.ly/instructors/husain-al-mohssen/11766)
