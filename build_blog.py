@@ -56,22 +56,22 @@ at the end we have to have for each page 3 things:
 """
 
 from collections import namedtuple
-from pathlib import Path
 import markdown
 import shlex
 import shutil
 import datetime
 import re
-from pprint import pprint
-import glob, os
+import glob
+import os
 from pathlib import Path
 from collections import defaultdict
-from typing import Tuple, Dict, Iterable
+from typing import Tuple, Dict
 import mdfigure
+import subprocess
 
 MDFileData = namedtuple('MDFileData', ['date', 'raw_file', 'html', "title", 'tags'])
 
-title_pattern = re.compile(".*^\# *(.*)$.*", re.MULTILINE)
+title_pattern = re.compile(".*^# *(.*)$.*", re.MULTILINE)
 
 
 def git_date(filename: str)->datetime.datetime:
@@ -125,11 +125,12 @@ def embed_regular_links(raw_file):
 
 
 def md_to_html_converter(raw_file: str) -> Tuple[str, Dict]:
-    '''
-    :param raw_file: markdown
+    """
+    :return: 
+    """:param raw_file: markdown
     :return: valid html
-    '''
-    md = markdown.Markdown(extensions=['meta', mdfigure.FigureExtension()])
+    """
+    md = markdown.Markdown(extensions=['meta', mdfigure.FigureExtension(), 'footnotes'])
     return md.convert(raw_file), md.Meta
 
 
@@ -171,15 +172,14 @@ def post_tags_as_string(tags)->str:
 def summarize_post(filename: str, post: MDFileData) -> str:
     '''
     takes a MD file and takes out the Title (pre-fixed with #) and the first image and return as md
-    :param raw_file: markdown body of post
     :return: markdown snippet of that blog post
     '''
     date = post.date
     title = post.title
-    img_pattern = re.compile(".*^\!\[.*\]\((.*)\)$.*", re.MULTILINE)
+    img_pattern = re.compile(".*^!\[.*]\((.*)\)$.*", re.MULTILINE)
     try:
         img_url = img_pattern.findall(post.raw_file)[0]
-        if not re.match(r"^(http)s*(:\/\/).*",img_url):
+        if not re.match(r"^(http)s*(://).*",img_url):
             img_url=f"/blog/{img_url}"
     except:
         img_url = None
@@ -427,12 +427,10 @@ def write_non_md_resoures(src: str, theme: str, target: str) -> None:
             continue
         create_parent_and_copy(f, target)
 
-import subprocess
-
 if __name__=="__main__":
     gs_bucket="husain.io"
     out_dir='out'
     build_blog(src='in', target=out_dir, theme='theme', debug=None)
     # copying the output to the correct bucket: 
-    subprocess.call(f"gsutil -m rsync -r -d {out_dir} gs://{gs_bucket}/",shell=True)
+    # subprocess.call(f"gsutil -m rsync -r -d {out_dir} gs://{gs_bucket}/",shell=True)
     

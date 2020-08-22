@@ -31,3 +31,8 @@ My:
 
 
 
+
+Footnotes[^1] have a label[^@#$%] and the footnote's content.
+
+[^1]: This is a footnote content.
+[^@#$%]: A footnote on the label: "@#$%".
