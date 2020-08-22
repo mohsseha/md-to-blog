@@ -4,7 +4,8 @@
 
 Add specifics to my jobs, team size, specific deliverables (eg. patents, # of images ). Probably will be more clear once you go though the Amazon interview prep. 
  
-
+### This blog: 
+https://drive.google.com/drive/folders/0B4pPV1rm5wHpa3lGSlZ5SzRHTGc
 # Interview Prep
 
 Ok, so this is a little bit crazy: 
