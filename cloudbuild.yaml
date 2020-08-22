@@ -1,3 +1,6 @@
 steps:
-- name: gcr.io/cloud-builders/gcloud
-  entrypoint: run.sh
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'tmp_img', '.']
+  timeout: 500s
+- name: 'tmp_img'
+  args: []

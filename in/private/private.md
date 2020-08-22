@@ -1,4 +1,9 @@
-# add specific numbers to CV
+# TO DO ITEMS: 
+
+## CV: 
+
+Add specifics to my jobs, team size, specific deliverables (eg. patents, # of images ). Probably will be more clear once you go though the Amazon interview prep. 
+ 
 
 # Interview Prep
 

@@ -1,37 +1,17 @@
 <!--This optional File is used to allow the creation custom menu orders etc*/--> 
-# [husain.io](http://Husain.io) [+]
+
+
  - [All Posts](/blog):
 	 - [Working in Teams](/blog/management)
 	 - [Machine Learning & AI](/blog/machine_learning)
-     - [Movies](/blog/movies)
+     - [Movies & Books](/blog/movies_n_books)
      - [Software Engineering](/blog/software_engineering)
  - [About](/About)
- - [Teaching](/Teaching)
-	 - [ML-Papers](/Teaching/ML-Papers)
+ - [Teaching & Training](/Teaching)
+	 - [Learning Machine Learning](/Teaching/ML-Papers)
+     <!-- [BAAI](/implement_ME)-->
 	 - [Academic](/Teaching/Academic)
 	 - [Interview-Prep](/Teaching/Interview-Prep)
- 	 - [Presentations-n-code](/Presentations-n-code)
-
-<!-- Proposed new Outline: 
-- Blog
-    -teams
-    -ML and AI
-    - Movies
-    - Software Engineering 
-- About 
-- Teaching
-    -Software engineering 
-    - Youtube? 
-
-
-
-My online presence is a product of 
-# ML
-# Teaching
-# Academic
-# Movies & Books
-# Management 
-# Software Engineering 
-# Professional Talks? 
-# BAAI??
--->
+     <!-- [Software & Professional Dev](/implement_ME)-->
+	
+<!-- 	 - [Presentations-n-code](/Presentations-n-code) -->
