@@ -1,17 +1,15 @@
-FROM python:3.8
+FROM gcr.io/google.com/cloudsdktool/cloud-sdk
 MAINTAINER Husain Al-Mohssen (husain@domain)
 
-WORKDIR /root
+WORKDIR /
 
-RUN curl -sSL https://sdk.cloud.google.com | bash
-ENV PATH $PATH:/root/google-cloud-sdk/bin
 
 COPY requirements.txt .
-RUN pip3 install -r requirements.txt --no-cache-dir
+RUN python3 -m pip install -r requirements.txt --no-cache-dir
 
 RUN mkdir md-to-blog
 
 COPY . md-to-blog 
 
-WORKDIR /root/md-to-blog
+WORKDIR /md-to-blog
 CMD ["run.sh"]
