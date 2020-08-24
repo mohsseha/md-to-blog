@@ -12,4 +12,4 @@ RUN mkdir md-to-blog
 COPY . md-to-blog 
 
 WORKDIR /md-to-blog
-CMD ["run.sh"]
+CMD ["./run.sh"]
