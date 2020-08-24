@@ -355,6 +355,8 @@ def spit(filename: str, content: str):
     Path(dir).mkdir(parents=True, exist_ok=True)
     with open(file=filename, mode='w', encoding="utf-8") as f:
         f.write(content)
+    print(f"DEBUG: just finished writing {filename}")
+    assert  Path(filename).exists() ,"DEBUG: failed writing for some reason "
 
 
 def human_readable_date(dt: datetime.datetime) -> str:
@@ -429,3 +431,4 @@ def write_non_md_resoures(src: str, theme: str, target: str) -> None:
 if __name__=="__main__":
     out_dir='out'
     build_blog(src='in', target=out_dir, theme='theme', debug=None)
+
