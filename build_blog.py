@@ -431,4 +431,4 @@ if __name__=="__main__":
     out_dir='out'
     build_blog(src='in', target=out_dir, theme='theme', debug=None)
     # copying the output to the correct bucket: 
-    # assert 0 == subprocess.call(f"gsutil -m rsync -r -d -c {out_dir} gs://{gs_bucket}/",shell=True), "👹gsutils failed👹"
+    assert 0 == subprocess.call(f"gsutil -m rsync -r -d -c {out_dir} gs://{gs_bucket}/",shell=True), "👹gsutils failed👹"
