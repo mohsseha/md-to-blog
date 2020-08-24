@@ -74,7 +74,7 @@ MDFileData = namedtuple('MDFileData', ['date', 'raw_file', 'html', "title", 'tag
 title_pattern = re.compile(".*^# *(.*)$.*", re.MULTILINE)
 
 
-def git_date(filename: str)->datetime.datetime:
+def git_date(filename: str) -> datetime.datetime:
     from subprocess import Popen, PIPE
     result = datetime.datetime.now()  # default value
     try:
@@ -163,7 +163,7 @@ def load_md_files(src: str):
     return {file_name[len(src) + 1:]: load_file(file_name) for file_name in glob.glob(f"{src}/**/*md", recursive=True)}
 
 
-def post_tags_as_string(tags)->str:
+def post_tags_as_string(tags) -> str:
     return '<span class="sans">' + "Tags: " + ", ".join(
         ("[" + t + "](/blog/" + t + ")" for t in tags)) + '</span>'
 
@@ -178,8 +178,8 @@ def summarize_post(filename: str, post: MDFileData) -> str:
     img_pattern = re.compile(".*^!\[.*]\((.*)\)$.*", re.MULTILINE)
     try:
         img_url = img_pattern.findall(post.raw_file)[0]
-        if not re.match(r"^(http)s*(://).*",img_url):
-            img_url=f"/blog/{img_url}"
+        if not re.match(r"^(http)s*(://).*", img_url):
+            img_url = f"/blog/{img_url}"
     except:
         img_url = None
     assert date and title and filename, f"something is wrong with {filename} or {post}"
@@ -188,7 +188,7 @@ def summarize_post(filename: str, post: MDFileData) -> str:
            + (f"""\n![ ]({img_url})\n""" if img_url else "") \
            + f"""\n{human_readable_date(date)} """ \
            + post_tags_as_string(post.tags) \
-        +"\n***\n"
+           + "\n***\n"
     # + f"""\n[Read More ...](/{filename_html})\n\n"""
 
 
@@ -356,7 +356,7 @@ def spit(filename: str, content: str):
     with open(file=filename, mode='w', encoding="utf-8") as f:
         f.write(content)
     print(f"DEBUG: just finished writing {filename}")
-    assert  Path(filename).exists() ,"DEBUG: failed writing for some reason "
+    assert Path(filename).exists(), "DEBUG: failed writing for some reason "
 
 
 def human_readable_date(dt: datetime.datetime) -> str:
@@ -418,7 +418,7 @@ def create_parent_and_copy(src: str, dest: str) -> None:
 
 def write_non_md_resoures(src: str, theme: str, target: str) -> None:
     # first remove file in output folder
-    shutil.rmtree(target,ignore_errors=True)
+    shutil.rmtree(target, ignore_errors=True)
     os.makedirs(target)
     # now copy assets:
     for f in glob.glob(f"{theme}/**", recursive=True):
@@ -428,7 +428,7 @@ def write_non_md_resoures(src: str, theme: str, target: str) -> None:
             continue
         create_parent_and_copy(f, target)
 
-if __name__=="__main__":
-    out_dir='out'
-    build_blog(src='in', target=out_dir, theme='theme', debug=None)
 
+if __name__ == "__main__":
+    build_blog(src='in', target='out', theme='theme', debug=None)
+    subprocess.call("find /workdir/md-to-blog",shell=True) # something is not right with the GC build env. 
