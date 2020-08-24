@@ -431,4 +431,4 @@ def write_non_md_resoures(src: str, theme: str, target: str) -> None:
 
 if __name__ == "__main__":
     build_blog(src='in', target='out', theme='theme', debug=None)
-    subprocess.call("find /workdir/md-to-blog",shell=True) # something is not right with the GC build env. 
+    subprocess.call("find .",shell=True) # something is not right with the GC build env.
