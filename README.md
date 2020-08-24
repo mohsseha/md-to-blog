@@ -1,6 +1,6 @@
 # Markdown to Webpage Converter 
 
-This project is based on the revolutionary[^1] idea of maintaining a blog/webpage using markdown. To use: 
+This project is based on the revolutionary* idea of maintaining a blog/webpage using markdown. To use: 
 
 - `in/` is where all the input markdown assets live.
 	- `in/blog` is the blog folder and should be flat and are indexed
@@ -12,4 +12,4 @@ one day they will be search for now we are keeping it simple.
 
 
 
-[^1]: sarcasm 
+[*](): sarcasm 

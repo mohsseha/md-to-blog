@@ -67,7 +67,7 @@ from pathlib import Path
 from collections import defaultdict
 from typing import Tuple, Dict
 import mdfigure
-import subprocess
+# import subprocess
 
 MDFileData = namedtuple('MDFileData', ['date', 'raw_file', 'html', "title", 'tags'])
 
@@ -355,8 +355,8 @@ def spit(filename: str, content: str):
     Path(dir).mkdir(parents=True, exist_ok=True)
     with open(file=filename, mode='w', encoding="utf-8") as f:
         f.write(content)
-    print(f"DEBUG: just finished writing {filename}")
-    assert Path(filename).exists(), "DEBUG: failed writing for some reason "
+    # print(f"DEBUG: just finished writing {filename}")
+    # assert Path(filename).exists(), "DEBUG: failed writing for some reason "
 
 
 def human_readable_date(dt: datetime.datetime) -> str:
@@ -431,4 +431,3 @@ def write_non_md_resoures(src: str, theme: str, target: str) -> None:
 
 if __name__ == "__main__":
     build_blog(src='in', target='out', theme='theme', debug=None)
-    subprocess.call("find .",shell=True) # something is not right with the GC build env.
