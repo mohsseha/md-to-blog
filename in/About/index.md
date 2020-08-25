@@ -9,6 +9,7 @@
 me.jpg
 
 I wanted to make this blog to share my thoughts about things that I care about:
+
 - [Building Things (using computers)](/blog/software_engineering)
 - [Helping people (and teams) grow](/blog/management)
 - [Movies & Books](/blog/movies_n_books)   
