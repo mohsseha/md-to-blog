@@ -7,7 +7,11 @@ https://arxiv.org/pdf/1905.01164.pdf
 
 
 ## DL Engineering Course: 
-https://course.fullstackdeeplearning.com/?utm_campaign=OpenMLU%20Newsletter&utm_medium=email&utm_source=Revue%20newsletter
+[Full Stack Deep Learning](https://course.fullstackdeeplearning.com/) is a great practical course: 
+
+- Good focus on ML infrastructure issues. 
+- Has quite a few heavy hitters as contributors. 
+- Lots of practical pointers. Roughly lives [here](https://github.com/full-stack-deep-learning/course-gitbook/blob/master/.gitbook/assets/image%20%282%29.png) compared to other sites
 
 
 ## Fast.AI course: 
