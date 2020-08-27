@@ -1,4 +1,5 @@
 tags:	Machine_Learning
+date: 2020-08-01
 
 # SimCLR: (almost) beating Supervised Learning 
 
