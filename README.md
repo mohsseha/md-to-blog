@@ -1,4 +1,4 @@
-# Markdown to Webpage Converter 
+# Markdown to Webpage Converter + my personal blog (husain.io)
 
 This project is based on the revolutionary* idea of maintaining a blog/webpage using markdown. To use: 
 
@@ -8,7 +8,7 @@ This project is based on the revolutionary* idea of maintaining a blog/webpage u
 	 
 - `out/` is where your blog lives 
 
-one day they will be search for now we are keeping it simple. 
+One day they will be search for now we are keeping it simple. 
 
 
 
