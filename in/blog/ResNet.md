@@ -1,5 +1,5 @@
 Tags: Machine_Learning
-
+Date: 2020-07-29
 # Simple, Clean explanation of ResNet
 
 https://youtu.be/sAzL4XMke80
