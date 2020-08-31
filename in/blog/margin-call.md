@@ -15,6 +15,6 @@ https://youtu.be/IjZ-ke1kJrA
 The trailer makes it looks like a Wolf Of Wall Street knock offs but I think it's much more subtle (and useful in our everyday life than that). 
 I'd recommend watching they key decision scene where Jeremy Irons walks in a room. It was spectacular! And reminded me of one my favorite books about charisma:
 
-charisma.jpg
+charisma-myth.jpg
 
 I highly recommend both!
