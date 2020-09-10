@@ -184,7 +184,7 @@ def summarize_post(filename: str, post: MDFileData) -> str:
         img_url = None
     assert date and title and filename, f"something is wrong with {filename} or {post}"
     filename_html = re.sub(r"(.+\.)md$", r"\1html", filename)
-    return f"""## [{title}](/{filename_html})""" \
+    return f"""# [{title}](/{filename_html})""" \
            + (f"""\n![ ]({img_url})\n""" if img_url else "") \
            + f"""\n{human_readable_date(date)} """ \
            + post_tags_as_string(post.tags) \
