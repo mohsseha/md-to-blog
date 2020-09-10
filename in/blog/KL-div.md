@@ -7,7 +7,7 @@ Date: 2020-09-10
 
 Bayesian-statistics-the-fun-way.png
 
-I'm always looking for multiple ways of explaining the most important ideas in ML for myself and [my teammembers/students](/Teaching). I came across this book by [@willkurt](https://twitter.com/willkurt) that I think fits that need. 
+I'm always looking for alternative ways of explaining the most important ideas in ML for myself and [my teammembers/students](/Teaching). I came across this book by [@willkurt](https://twitter.com/willkurt) that I think fits that need. 
 
 The nice thing about this book is it is rigorous enough to not send you in the wrong direction once you mastered the topic and decide to dig deeper in the literature.
 
