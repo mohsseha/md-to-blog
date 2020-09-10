@@ -4,11 +4,10 @@ Outline:
 This is where I keep resouces for myself and my students. Broadly you will find: code, slides and links to online resouces. 
 
 Focus is on: 
-- BAAI Meetup and Recent AI/ML Papers 
-    - index.md: 
-- Machine Learning and Data Science:
-    - index.md: Reference to GA class 
-    - ML-YouTube.md
+
+- [BAAI Meetup and Recent AI/ML Papers](/Teaching/DS_n_ML/BAAI.html)
+- [Machine Learning and Data Science](/Teaching/DS_n_ML):
+    - [ML YouTube links](/Teaching/DS_n_ML/ML-YouTube.html)
 - Software Engineering 
     - index.md: SE-YouTube.md 
     - Conferences and Workshops Presentations-n-code
