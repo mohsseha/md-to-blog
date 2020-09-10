@@ -1,7 +1,7 @@
 Tags: Machine_Learning
 Date: 2020-04-01
 
-# How Much Math Do You Need for Learning ML
+# How Much Math Do You Need to Learn ML?
 
 For people who don't come from a mathematical background, math can be a big hurdle for following and learning ML. Recently, I came across this: 
 
