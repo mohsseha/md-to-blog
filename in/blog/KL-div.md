@@ -1,3 +1,8 @@
+Tags: movies_n_books
+      machine_learning
+      
+Date: 2020-09-10
+
 # Fun Bayesian Stats for ML
 
 Bayesian-statistics-the-fun-way.png
