@@ -8,7 +8,7 @@
 	- [Movies & Books](/blog/movies_n_books)
  - [About](/About)
  - [Teaching & Training](/Teaching)
-	 - [Learning Machine Learning](/Teaching/ML-Papers)
+	 - [Learning Machine Learning](/Teaching/DS_n_ML)
      <!-- [BAAI](/implement_ME)-->
 	 - [Academic](/Teaching/Academic)
 	 - [Interview-Prep](/Teaching/Interview-Prep)
