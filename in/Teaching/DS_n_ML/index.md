@@ -26,4 +26,10 @@ I've always been a big fan of the MLSS [(Machine Learning Summer School)](http:/
 - I find myself flipping back and forth between this and [the Deep Dive Book](https://d2l.ai/)
 
 
-# [Bishop is a practical classic (esp. Graphical Methods)](https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf)
+# General Machine Learning 
+
+[Bishop is a practical classic (esp. Graphical Methods)](https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf): 
+
+- The book is widely taught at schools 
+- The YouTube lectures loosely associated with it are pretty good: 
+https://www.youtube.com/watch?v=ju1Grt2hdko
