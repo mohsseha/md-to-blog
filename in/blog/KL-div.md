@@ -1,7 +1,6 @@
-Tags: movies_n_books
-      machine_learning
-      
-Date: 2020-09-10
+Tags:   Machine_learning
+        Movies_n_books
+Date:   2020-09-10
 
 # Fun Bayesian Stats for ML
 
