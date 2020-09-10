@@ -13,3 +13,6 @@
 
 DS@ google: 
 https://www.reddit.com/r/datascience/comments/ay553h/data_science_interview_and_positions_at_google/
+# Useful Links to learn Machine Learning: 
+
+https://www.reddit.com/r/MachineLearning/comments/i9kztq/d_hidden_gems_and_underappreciated_resources/
