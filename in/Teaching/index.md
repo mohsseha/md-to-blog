@@ -8,12 +8,12 @@ Focus is on:
 - [BAAI Meetup and Recent AI/ML Papers](/Teaching/DS_n_ML/BAAI.html)
 - [Machine Learning and Data Science](/Teaching/DS_n_ML):
     - [ML YouTube links](/Teaching/DS_n_ML/ML-YouTube.html)
-- Software Engineering 
-    - index.md: SE-YouTube.md 
+- [Software Engineering](/Teaching/SW):
+    - Putting the Engineering in Software Engineering
     - Conferences and Workshops Presentations-n-code
 - Tech Job Interviewing 
-- Academic work
-    - index.md: inline a few slides and thesis 
+- [Academic work](/Teaching/Academic)
+
 
 # Teaching And Training 
 
