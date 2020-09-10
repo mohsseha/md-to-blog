@@ -40,3 +40,8 @@ I point my jr. team-mates to this playlist. Assumes you know how to program but 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLPUybmlC9fxrbtVmsA272HY_DF6YxEOPx" frameborder="5" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 [play in new window](https://www.youtube.com/embed/videoseries?list=PLPUybmlC9fxrbtVmsA272HY_DF6YxEOPx)
+
+
+
+old (but good playlist) by Nando de Freitas: 
+https://www.youtube.com/watch?v=dV80NAlEins&list=PLE6Wd9FR--EfW8dtjAuPoTuPcqmOV53Fu
