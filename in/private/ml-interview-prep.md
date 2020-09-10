@@ -9,7 +9,6 @@
 
 ### [good discussion of what to **ask**](https://www.reddit.com/r/MachineLearning/comments/cf67ga/discussion_great_thread_on_ml_interviews_by_chip/)
 
-### [Bishop is a practical classic (esp. Graphical Methods)](https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf)
 
 
 DS@ google: 
