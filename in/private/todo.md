@@ -10,11 +10,17 @@ https://slideslive.com/t/icml
 
 ### Self Driving: 
 https://gradientdescent.co
+MIT Course: 
+https://deeplearning.mit.edu/
 
 https://slideslive.com/38917690/multitask-learning-in-the-wilderness
 effcicient slides here: 
 
 excellent blog: https://strangecosmos.substack.com
+
+https://fullstackdeeplearning.com/
+slides of course are here: 
+ - https://www.slideshare.net/sergeykarayev/testing-and-deployment-full-stack-deep-learning?next_slideshow=1
 
 
 
