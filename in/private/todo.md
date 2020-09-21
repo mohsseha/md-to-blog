@@ -9,7 +9,9 @@ https://amitness.com/2020/07/semi-supervised-learning/
 https://slideslive.com/t/icml
 
 ### Self Driving: 
-https://gradientdescent.co
+
+[Good General Forum to discuss Self-driving cars](https://gradientdescent.co)
+
 MIT Course: 
 https://deeplearning.mit.edu/
 
