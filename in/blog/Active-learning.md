@@ -11,7 +11,8 @@ You send for labeling?'''
 This is at least as important as the type of network you use. In fact the only thing that's more important when doing practical projects is the problem formulation itself. 
 
 
-Anyway, on to the link:
+Anyway, on to the links:
 
 http://jacobgil.github.io/deeplearning/activelearning
 
+https://towardsdatascience.com/review-suggestive-annotation-deep-active-learning-framework-biomedical-image-segmentation-e08e4b931ea6
