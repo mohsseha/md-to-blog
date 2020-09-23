@@ -14,11 +14,11 @@ I was internally recruited to develop the marquee feature of next-gen robots. My
 
 - **ML Research & Development** of robot embedded CNN models that:  
 	- are optimized for detection, localization and embedding.
-	- regularly have <1% error in *millions of homes*.
+	- regularly have <1% error in *millions* of homes globally.
 - **Scalable Data collection processes and infrastructure** with: 
 	- ~10^8 labeled and unlabeled images.
 	- guaranteed user privacy exceeding GDPR requirements.
-	- __cost effective__ real image labeling and synthetic data generation.
+	- *cost effective* real image labeling and synthetic data generation.
 - **Corporate ML technology support:** 
 	- Supported iRobot Ventures in making investment decisions in 10's of companies globally.
 	- IP/patent production (details below).
