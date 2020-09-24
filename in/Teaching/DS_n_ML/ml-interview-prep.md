@@ -16,3 +16,7 @@ https://www.reddit.com/r/datascience/comments/ay553h/data_science_interview_and_
 # Useful Links to learn Machine Learning: 
 
 https://www.reddit.com/r/MachineLearning/comments/i9kztq/d_hidden_gems_and_underappreciated_resources/
+
+
+# other good resources:
+https://research.fb.com/blog/2018/05/the-facebook-field-guide-to-machine-learning-video-series/
