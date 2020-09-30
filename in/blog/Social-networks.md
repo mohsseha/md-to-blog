@@ -3,11 +3,11 @@ Tags: machine_learning
 Date: 2020-09-21
 
 
-# How The Tech Attention Industry works 
+# How The Tech Attention Industry Works 
 
 https://secureservercdn.net/50.62.172.113/gvt.c8b.myftpupload.com/wp-content/uploads/2020/08/THE_SOCIAL_DILEMMA_MONSTER_HI_RES_JPEG-scaled.jpg
 
-Have been enjoying this documentary:
+I have been enjoying this documentary:
 
 https://youtu.be/uaaC57tcci0
 
