@@ -15,6 +15,10 @@ https://arxiv.org/pdf/2002.05709.pdf
 ### Video: 
 https://www.youtube.com/watch?v=APki8LmdJwY
 
+and this: 
+https://youtu.be/2lkUNDZld-4
+
+
 ### Blog Posts: 
 https://amitness.com/2020/03/illustrated-simclr/
 
