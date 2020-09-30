@@ -9,7 +9,11 @@ Short and to the point.
 resnet.jpg
 
 Updated:
- -an other good view:
 
-
+ - an other good view:
+ 
 https://youtu.be/RYth6EbBUqM
+
+ - an even better one:
+ 
+ https://youtu.be/GWt6Fu05voI
