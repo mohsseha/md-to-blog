@@ -42,7 +42,7 @@ A great reference is [here](http://d2l.ai/)
 
 ### Interview Prep
 
-
+General Interview Questions: https://yangshun.github.io/tech-interview-handbook/questions-to-ask
 ## All Employeers:
 - Ethics: “tell me about examples of how people are held @ highest standards” 
 - Risk: 
