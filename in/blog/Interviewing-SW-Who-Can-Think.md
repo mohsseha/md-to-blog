@@ -13,6 +13,7 @@ It reminds me of one of the more fun interview questions I used to use in Machin
 ''' 
 why is this funny? 
 '''
+
 https://imgs.xkcd.com/comics/significant.png
 
 Not only does it reduce stress levels in an interview, it gives less-academically prepared candidates an oppertunity to practically shine. 
