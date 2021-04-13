@@ -1,7 +1,7 @@
 # Husain Al-Mohssen
 
 ## Summary
-I am a team leader with a proven record of building and managing software engineering, data science and ML teams. I have a track record of delivering effective results in business and academic environments. Creating products that delight users is what I live for.
+I am a team leader with a proven record of building and managing software engineering, data science and machine learning teams. I have a track record of delivering effective results in business and academic environments. Creating products that delight users is what I live for.
 
 ## Education
 - *Massachusetts Institute of Technology*, PhD 2010, Master’s 2003, School of Engineering with Minor in Entrepreneurship and Management
@@ -14,7 +14,7 @@ I was internally recruited to develop the marquee feature of next-gen robots. My
 
 - **ML Research & Development** of robot embedded CNN models that:  
 	- are optimized for detection, localization and embedding.
-	- regularly have <1% error in *millions* of homes globally.
+	- have <1% error in *millions* of homes globally.
 - **Scalable Data collection processes and infrastructure** with: 
 	- ~10^8 labeled and unlabeled images.
 	- guaranteed user privacy exceeding GDPR requirements.
@@ -28,15 +28,15 @@ As the team leader I focus on:
 - *Product strategy* developing ML product roadmaps that meet PM, UX and cost constraints. 
 - *Scientific leadership* help my team review and build on latest DL/ML literature.
 - *Software architecture* selecting the right tools and vendors to support our data pipeline and training needs. 
-- *Team growth* Our team grew from a couple of interns to a team of 25+. I Interviewed 100's of candidates and worked with HR to enhance our team's *diversity*. 
+- *Team growth* grew the teams from a couple of interns to a team of 25+ full timers. I Interviewed 100's of candidates and worked with HR to substantially improve amd enhance our diversity and inclusion process. 
 
 ### Principle Data Scientist, iRobot — 2017-2018
-- Developed data science models that distilled the data streaming from millions of robots to actionable intelligence used by everyone in the company (from executives down to rank-and-file engineers). 
-- Research to support cutting-edge digital robot user experiences focused on machine learning and augmented reality. Built The minimal viable products that were used to to prove out concepts and solidify product roadmaps.
-- Hire, mentor, collaborate with and managed teams to support the above three focus areas.
+- Developed data science models that distilled the data streaming from millions of robots to actionable intelligence used everywhere from rank-and-file engineers to executives. 
+- Led research to support cutting-edge digital robot user experiences focused on machine learning and augmented reality. Built The minimal viable products that were used to to prove out concepts and solidify product roadmaps.
+- Hired, mentored, and sometimes managed teams to support the above three focus areas.
 
 ### Lead Instructor, General Assembly & Professional Speaker at No Fluff Just Stuff Conferences — 2015-
-Taught DS/ML programs and professional conference workshops that vary in length from a single day to multiple months. Topics include machine learning methods, visualization, Big Data, software architecture & other related approaches.
+Taught DS/ML programs and professional conference workshops that vary in length from a single day to multiple months. Topics include ML methods, visualization, Big Data, software architecture, etc.
 
 ### Data Scientist & Software Architect, EnerNOC, — 2014-2016
 - Researched different methods of modeling and projecting energy data and time-series (25 provisional & issued patents).
@@ -54,7 +54,7 @@ _______
 I have evaluated, used and taught many tools over the years, some of my favorites: 
 
 - *Machine Learning & Data Science:* TensorFlow, CoreML, Apache Spark and Kubeflow Pipelines.
-- *Languages:* Wolfram, Clojure/ClojureScript, Java, Python and Scala (in that order) 
+- *Languages:* Wolfram, Clojure/ClojureScript, Java, Python and Scala snd others. 
 - *Cloud and distributed systems*: I've been using linux since 0.96, and used it to build big and small systems on anything from hand-built HPC clusters to large scale AWS and GCP deployments. Most recently, I have been using Kubeflow Pipelines to train and validate ML models at the scale of 10's of millions of images.
 ________
 
