@@ -1,5 +1,5 @@
 FROM gcr.io/google.com/cloudsdktool/cloud-sdk
-MAINTAINER Husain Al-Mohssen (husain@domain)
+MAINTAINER Husain Al-Mohssen (service-account@husain.io)
 
 WORKDIR /workdir
 
