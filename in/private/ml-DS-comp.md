@@ -14,6 +14,7 @@ _Note_:
 - This is global, location makes a huge difference. 
 - Even not particularly fancy big companies can pay more than you expect: https://www.levels.fyi/company/Walmart/salaries/
 
+
 ## Contracting: 
 I've seen this vary widely depending on the experiance and the speciality of the person you are working with. Expect to pay $75/hour for someone who is trying a new skill set and have you pay for it, up to well north of $200/hour for ex-microsoft/google engineers doing freelance work. 
 
