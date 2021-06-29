@@ -13,7 +13,9 @@ _Note_:
 
 - This data is *almost certainly* baised. It's tricky to figure out in which direction. 
 - This is global, location makes a huge difference. 
-- Even not particularly fancy big companies can pay more than you expect: https://www.levels.fyi/company/Walmart/salaries/
+- Even not particularly fancy big companies can pay more than you expect: 
+- [Walmart](https://www.levels.fyi/company/Walmart/salaries/)
+- [Wayfair](https://www.levels.fyi/company/Wayfair/salaries/Software-Engineer/)
 
 
 ## Contracting: 
