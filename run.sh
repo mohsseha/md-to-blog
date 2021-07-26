@@ -5,5 +5,8 @@
 set -e 
 
 
-python3 build_blog.py 
+#python3 build_blog.py 
+
+find . 
 gsutil -m rsync -r -d -c out gs://husain.io/ 
+# test
