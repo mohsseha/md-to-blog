@@ -4,6 +4,8 @@ set -e # stop if there is an error
 
 gsutil cp gs://husain-io-tmp/ssh/service-account-husain.io ~/.ssh/id_rsa 
 chmod 400 ~/.ssh/id_rsa
+ssh-keyscan github.com >> ~/.ssh/known_hosts
+
 
 python3 build_blog.py
 
@@ -22,7 +24,6 @@ cd mohsseha.github.com/
 git add -a 
 git status 
 git commit -a -m "auto generated commit message from svs account. See run.sh in github.com/md-to-blog"
-ssh-keyscan github.com >> ~/.ssh/known_hosts
 git push 
 
 echo  ✅ done ✅ 
