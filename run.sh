@@ -15,7 +15,7 @@ python3 build_blog.py
 
 cd /workdir
 
-git clone git@github.com:mohsseha/mohsseha.github.com.git
+git clone --progress --verbose git@github.com:mohsseha/mohsseha.github.com.git
 
 rm -fr /workdir/mohsseha.github.com/*
 #copy new webpage to output repo: 
