@@ -5,6 +5,9 @@ set -e # stop if there is an error
 gsutil cp gs://husain-io-tmp/ssh/service-account-husain.io ~/.ssh/id_rsa 
 chmod 400 ~/.ssh/id_rsa
 ssh-keyscan github.com >> ~/.ssh/known_hosts
+git config --global user.email "service_account@husain.io"
+git config --global user.name "service account GCP Builder"
+
 
 
 python3 build_blog.py
@@ -21,7 +24,8 @@ cp -a md-to-blog/out/. mohsseha.github.com/
 
 # push new webpage back to github: 
 cd mohsseha.github.com/
-git add -a 
+touch delme # used for testing
+git add .
 git status 
 git commit -a -m "auto generated commit message from svs account. See run.sh in github.com/md-to-blog"
 git push 
