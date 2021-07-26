@@ -24,7 +24,7 @@ cp -a md-to-blog/out/. mohsseha.github.com/
 
 # push new webpage back to github: 
 cd mohsseha.github.com/
-touch delme # used for testing
+date > last_build_time.md # used for testing
 git add .
 git status 
 git commit -a -m "auto generated commit message from svs account. See run.sh in github.com/md-to-blog"
