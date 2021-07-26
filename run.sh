@@ -5,7 +5,6 @@ set -e # stop if there is an error
 gsutil cp gs://husain-io-tmp/ssh/service-account-husain.io ~/.ssh/id_rsa 
 chmod 400 ~/.ssh/id_rsa
 
-
 python3 build_blog.py
 
 
@@ -27,4 +26,3 @@ ssh-keyscan github.com >> ~/.ssh/known_hosts
 git push 
 
 echo  ✅ done ✅ 
-
