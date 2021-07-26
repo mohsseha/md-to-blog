@@ -9,6 +9,8 @@ git config --global user.email "service_account@husain.io"
 git config --global user.name "service account GCP Builder"
 
 
+echo DEBUG: 
+cat ~/.ssh/known_hosts
 
 python3 build_blog.py
 
