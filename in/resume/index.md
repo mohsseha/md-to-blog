@@ -16,8 +16,8 @@ My focus has been on perception, mapping and data-strategy to support production
 - Lead a team of 14 ML Engineers, Scientist and techs with a 7 figure budget.
 
 ### Manager, ML Modeling, iRobot — 2018 - 2021
-Recruited to develop the marquee feature of J7 robot: the ability to see obstacles in millions of homes when cleaning with with error rate of <0.1%. The team:
-- Grew from 1 to a peak of 10 with (50% of team had PhDs).
+Recruited to develop the marquee feature of Roomba J7: the ability to see obstacles in millions of homes when cleaning with with error rate of <0.1%. The team:
+- Grew from 1 to a peak of 10 with (~50% of team had PhDs).
 - Employed state of the art data pipelines and technologies to create privacy preserving (GDPR), reproducible, and completely automated AI/ML vision learning models. Technologies used include KubeFlow Pipelines, Population Based Training, Active Learning as well as a number of Semi-supervised pre-training and synthetic data methods. 
 
 ### Principle Data Scientist, iRobot — 2017-2018
