@@ -1,7 +1,7 @@
 # Husain Al-Mohssen
 
 ## Summary
-I am a team leader with a proven record of building and managing software engineering, data science and machine learning teams. I have a track record of delivering effective results in business and academic environments. Creating products that delight users is what I live for.
+I am a leader & solution maker focused in the area of AI/ML especially for vision based applications. I pride myself in mastering the trade-offs needed to build software and data-driven systems that deliver value, quickly, accurately and with minimal complexity. I excel at creating happy and effective teams that create delightful products.
 
 ## Education
 - *Massachusetts Institute of Technology*, PhD 2010, Master’s 2003, School of Engineering with Minor in Entrepreneurship and Management
@@ -9,34 +9,24 @@ I am a team leader with a proven record of building and managing software engine
 
 ## Recent Work History
 
-### Manager, ML Modeling, iRobot — 2018 -
-I was internally recruited to develop the marquee feature of next-gen robots. My team's focus is on: 
+### Director, Machine Learning, Symbotic - 2021 -
+My focus has been on perception, mapping and data-strategy to support production ML/AI applications. Some highlights:
+- Refocused the ML/Vision roadmap on a path that gives a positive ROI in months instead of years. Two key decisions: 1. Reformulating the robot perception problem to use new state-of-the-art Deep Learning networks and 2. adopting on-bot containerization to reduce development, manufacturing and distribution costs.
+- The perception solutions are accurate to within a millimeter and can scale to an error rate < 1/million transactions.
+- Lead a team of 14 ML Engineers, Scientist and techs with a 7 figure budget.
 
-- **ML Research & Development** of robot embedded CNN models that:  
-	- are optimized for detection, localization and embedding.
-	- have <1% error in *millions* of homes globally.
-- **Scalable Data collection processes and infrastructure** with: 
-	- ~10^8 labeled and unlabeled images.
-	- guaranteed user privacy exceeding GDPR requirements.
-	- *cost effective* real image labeling and synthetic data generation.
-- **Corporate ML technology support:** 
-	- Supported iRobot Ventures in making investment decisions in 10's of companies globally.
-	- IP/patent production (details below).
-
-As the team leader I focus on: 
-
-- *Product strategy* developing ML product roadmaps that meet PM, UX and cost constraints. 
-- *Scientific leadership* help my team review and build on latest DL/ML literature.
-- *Software architecture* selecting the right tools and vendors to support our data pipeline and training needs. 
-- *Team growth* grew the teams from a couple of interns to a team of 25+ full timers. I Interviewed 100's of candidates and worked with HR to substantially improve amd enhance our diversity and inclusion process. 
+### Manager, ML Modeling, iRobot — 2018 - 2021
+Recruited to develop the marquee feature of J7 robot: the ability to see obstacles in millions of homes when cleaning with with error rate of <0.1%. The team:
+- Grew from 1 to a peak of 10 with (50% of team had PhDs).
+- Employed state of the art data pipelines and technologies to create privacy preserving (GDPR), reproducible, and completely automated AI/ML vision learning models. Technologies used include KubeFlow Pipelines, Population Based Training, Active Learning as well as a number of Semi-supervised pre-training and synthetic data methods. 
 
 ### Principle Data Scientist, iRobot — 2017-2018
-- Developed data science models that distilled the data streaming from millions of robots to actionable intelligence used everywhere from rank-and-file engineers to executives. 
-- Led research to support cutting-edge digital robot user experiences focused on machine learning and augmented reality. Built The minimal viable products that were used to to prove out concepts and solidify product roadmaps.
-- Hired, mentored, and sometimes managed teams to support the above three focus areas.
+- Developed data science models that distilled the data streaming from millions of robots to actionable intelligence used by everyone in the company (from executives down to rank-and-file engineers). 
+- Research to support cutting-edge digital robot user experiences focused on machine learning and augmented reality. 
+- Hire, mentor, collaborate with and managed teams to support the above three focus areas.
 
 ### Lead Instructor, General Assembly & Professional Speaker at No Fluff Just Stuff Conferences — 2015-
-Taught DS/ML programs and professional conference workshops that vary in length from a single day to multiple months. Topics include ML methods, visualization, Big Data, software architecture, etc.
+Taught DS/ML programs and professional conference workshops that vary in length from a single day to multiple months. Topics include machine learning methods, visualization, Big Data, software architecture & other related approaches.
 
 ### Data Scientist & Software Architect, EnerNOC, — 2014-2016
 - Researched different methods of modeling and projecting energy data and time-series (25 provisional & issued patents).
@@ -54,8 +44,8 @@ _______
 I have evaluated, used and taught many tools over the years, some of my favorites: 
 
 - *Machine Learning & Data Science:* TensorFlow, CoreML, Apache Spark and Kubeflow Pipelines.
-- *Languages:* Wolfram, Clojure/ClojureScript, Java, Python and Scala snd others. 
-- *Cloud and distributed systems*: I've been using linux since 0.96, and used it to build big and small systems on anything from hand-built HPC clusters to large scale AWS and GCP deployments. Most recently, I have been using Kubeflow Pipelines to train and validate ML models at the scale of 10's of millions of images.
+- *Languages:* Clojure/ClojureScript, Python, Java, Wolfram, and Scala (in that order) 
+- *Cloud and distributed systems*: I've been using linux since 0.96, and used it to build big and small systems on anything from hand-built HPC clusters to large scale AWS and GCP deployments. 
 ________
 
 ## Older Work Experience 
@@ -73,7 +63,7 @@ I assembled and led a team that won the 1st prize MIT Arab Business Plan Competi
 One of two engineers representing the final technical authority for the selection, maintenance and operation of the 380+ gas turbines that pump the majority of Saudi Arabia’s oil
 
 ## Patents 
-**20+ provisional and granted patents** in the areas of: 
+**22+ provisional and granted patents** in the areas of: 
 
 - Robotics 
 - Energy Management 
@@ -108,3 +98,10 @@ I have a large body of well-cited academic work. A list can be found [here](http
 —[GitHub](https://www.gitHub.com/mohsseha)
 </div></footer>
 
+
+
+<p>
+    <label for="mn-figure-1" class="margin-toggle">⊕</label><input type="checkbox" id="mn-figure-1" class="margin-toggle">
+    <span class="marginnote">
+END
+</p>
